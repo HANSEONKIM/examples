@@ -1,0 +1,62 @@
+package c_statment;
+
+import java.util.Scanner;
+
+public class number_game_answer {
+
+	public static void main(String[] args) {
+
+		Scanner s = new Scanner(System.in);
+
+		
+
+		int count = 0;
+		int a1, a2, a3 = 0;
+
+		a1 = (int) (Math.random() * 9) + 1;
+		do {
+			a2 = (int) (Math.random() * 9) + 1;
+		} while (a1 == a2);
+
+		do {
+			a3 = (int) (Math.random() * 9) + 1;
+		} while (a3 == a1 || a3 == a2);
+
+		while (true) {
+			System.out.println("3자리수를 입력해주세요>");
+			int input = Integer.parseInt(s.nextLine());
+
+			int t3 = input % 10;
+			input /= 10;
+			int t2 = input % 10;
+			input /= 10;
+			int t1 = input;
+
+			int strike = 0;
+			int ball = 0;
+			int out = 0;
+
+			if (a1 == t1)
+				strike++;
+			if (a2 == t2)
+				strike++;
+			if (a3 == t3)
+				strike++;
+
+			if (a1 == t2 || a1 == t3)
+				ball++;
+			if (a2 == t1 || a1 == t3)
+				ball++;
+			if (a3 == t2 || a1 == t1)
+				ball++;
+
+			out = 3 - strike - ball;
+
+			System.out.println(++count + "차 시도 :" + strike + "S" + ball + "B"
+					+ out + "O");
+
+		}
+
+	}
+
+}
