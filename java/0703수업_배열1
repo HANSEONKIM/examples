@@ -1,0 +1,225 @@
+package d_array;
+
+import java.util.Arrays; //ctrl + shift + 영어o
+
+
+
+public class Array {
+
+	public static void main(String[] args) {
+		
+		
+		/*
+		 * <<배열>>
+		 * - int [] number = new int [5]; // 기본값으로 초기화 한다.
+		 * - int [] number = new int[]{10, 20, 30, 40, 50}; 
+		 * - int [] number = {10, 20, 30, 40, 50}; //
+		 * 
+		 */
+		
+		
+		
+		// 배열은 참조형 타입이다. (참조형타입 : 값대신 주소를 저장한다)
+		int [] array ; // 배열의 주소를 저장할 공간이 만들어진다.
+		array = new int [5]; //배열이 생성되고 그 주소가 저장된다.
+		//new : 새로운 저장공간 생성 및 주소반환
+		//int[5] : int를 저장할 수 있는 5개의 공간
+		//배열 초기화시 기본값이 저장된다.
+		
+		
+		System.out.println(array[0]); //실제 값에 접근하기 위해서는 index를 저장해줘야한다.
+		
+		//index에는 int만 사용할 수 있다.(리터럴,변수,상수,연산 등)
+		//배열의 최대 크기는 int의 최대값 (약 20억)이다.
+		
+		
+		String arrayStr = Arrays.toString(array); //배열의 모든 인덱스에 저장된 값을 문자열로 반환한다.
+		System.out.println(arrayStr); //int의 기본값이 0이 저장되어 있다.
+		
+		
+		int [] iArray1 = new int[]{1,2,3};
+		//값의 개수로 배열의 길이가 정해진다.
+		
+		int [] iArray2 = {1,2,3}; //선언과 초기화를 동시에 해야 한다.
+//		int [] iArray3;
+//		iArray3 = {1,2,3}; //선언과 초기화 따로는 불가능하다.
+		
+		array[0] = 10; //인덱스는 0부터 시작한다.
+		array[1] = 20;
+		array[2] = 30;
+		array[3] = 40;
+		array[4] = 50; //마지막 인덱스는 "배열의 길이 -1" 이다.
+		
+		
+		//정수를 저장할 수 있는 길이가 10인 배열을 생성 및 초기화 해주세요.
+		
+		int [] iArray3 = new int[10];
+		//모든 인덱스에 있는 값을 변경해주세요.
+		iArray3[0] = 10;
+		iArray3[1] = 20;
+		iArray3[2] = 30;
+		iArray3[3] = 40;
+		iArray3[4] = 50;
+		iArray3[5] = 60;
+		iArray3[6] = 70;
+		iArray3[7] = 80;
+		iArray3[8] = 90;
+		iArray3[9] = 100;
+		// 모든 인덱스 안에 있는 값을 더해주세요.
+		
+		int sum = 0;
+		sum += iArray3[0]; 
+		sum += iArray3[1];
+		sum += iArray3[2];
+		sum += iArray3[3];
+		sum += iArray3[4];
+		sum += iArray3[5];
+		sum += iArray3[6];
+		sum += iArray3[7];
+		sum += iArray3[8];
+		sum += iArray3[9] ;
+		System.out.println(sum);
+		
+		int sum2 = 0;
+		for(int i =0;  i<iArray3.length; i++ ){
+			sum2 += iArray3[i];
+		}System.out.println(sum2);
+		
+		
+		//index는 1씩 증가하는 규칙이 있어 for문과 함게 사용하기 좋다.
+		
+		for(int i = 0; i < iArray3.length; i ++){
+			System.out.println(iArray3[i]);
+		}
+		
+		
+		//배열의 길이를 알고 잇다고 숫자를 사용하는 것은 하드코딩이라고 한다.
+		//길이를 알더라도 length를 사용하는 것이 더 좋은 코드이다.
+		
+		
+		for(int i = 0; i < iArray3.length; i ++){
+			
+			iArray3[i] = i + 1;
+		}
+			
+		System.out.println(Arrays.toString(iArray3));
+		
+		//배열에 숫자를 담고 합계와 평균을 구해보자.
+		
+		int[] numbers = new int [10]; //int10개를 저장할 수 있는 배열 만듬
+		
+		for (int i = 0; i <numbers.length; i++){
+			numbers[i] = (int)(Math.random()*100)+1;
+		}
+		System.out.println(Arrays.toString(numbers));
+		
+		int sum3 = 0;
+		double avg = 0;
+		for (int i = 0; i < numbers.length; i++){
+			sum3 += numbers[i];
+			avg = sum3/numbers.length;
+		}System.out.print("합계 = " +sum3+"평균 =" + avg);
+	
+		
+		
+		//향상된 for문
+		
+		for(int number : numbers){ //배열에 있는 값을 차례로 변수에 넣는다.
+			System.out.println(number);
+		}
+		
+		for (int number : numbers){
+			number = 0; //number의 값은 변경되지 않는다.
+			System.out.println(number);
+		}
+		System.out.println(Arrays.toString(numbers));
+		
+		
+		
+		//배열에 저장된 숫자들 중 최소값과 최대값을 찾아보세요.
+		//배열의 값이 최소값보다 작으면 최소값에 배열의 값을 저장하고 
+		//배열의 값이 최대값보다 크면 최대값에 배열의 값을 저장한다.
+		
+		
+		
+		int min = numbers[0];
+		int max = numbers[0];
+		for(int i =0; i<numbers.length; i++){
+			if(numbers[i] < min){
+				min = numbers[i];
+			}
+			if(max < numbers[i]){
+				max = numbers[i];
+			}
+		}System.out.println("min :" + min + " max :" + max);
+		
+		
+		int[] shuffle = new int[30];
+		for(int i=0; i<shuffle.length; i++){
+			shuffle[i] = i +1;
+		}
+		System.out.println(Arrays.toString(shuffle));
+		
+		//배열의 값을 섞어보세요.
+		
+		
+	
+		
+		for(int i = 0; i <shuffle.length*100; i++){
+			int random = (int)(Math.random()*shuffle.length);
+			int temp = shuffle[0];
+			shuffle[0] = shuffle[random];
+			shuffle[random] = temp;
+		}
+		System.out.println(Arrays.toString(shuffle));
+		
+		
+		//배열은 길이를 변경할 수 없기 때문에 길이가 부족한 경우 더 큰 배열에 복사를 해야한다.
+		
+		int[] temp = new int[shuffle.length *2];
+		for(int i =0; i < shuffle.length; i++){
+			temp[i] = shuffle[i];
+		}
+		shuffle = temp;
+		System.out.println(Arrays.toString(shuffle));
+		
+		//배열 복사 매서드
+		int[] originArray = new int[]{1,2,3,4,5};
+		int[] copyArray = new int[originArray.length*2];
+		System.arraycopy(originArray,0,copyArray,4,originArray.length);
+		System.out.println(Arrays.toString(copyArray));
+		
+		
+		
+		randomCount();
+		
+				
+		
+	}
+
+	private static void randomCount() {
+		System.out.println("randeomCount 실행");
+		
+		//1~10 사이의 난수를 500번 생성하고, 각 숫자가 생성된 횟수를 출력해주세요.***이거과제****
+		
+		int[] num = new int [500]; 
+		
+		for (int i = 0; i <num.length ; i++){
+			num[i] = (int)(Math.random()*10);
+		}
+		System.out.println(Arrays.toString(num));
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}
