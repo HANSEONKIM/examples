@@ -203,9 +203,10 @@ public class Array {
 		//1~10 사이의 난수를 500번 생성하고, 각 숫자가 생성된 횟수를 출력해주세요.***이거과제****
 		
 		int[] num = new int [500]; 
+		int[] counter = new int[11];
 		
 		for (int i = 0; i <num.length ; i++){
-			num[i] = (int)(Math.random()*10);
+			num[i] = (int)(Math.random()*10)+1;
 		}
 		System.out.println(Arrays.toString(num));
 		System.out.println();
