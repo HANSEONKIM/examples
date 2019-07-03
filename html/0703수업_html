@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+
+	h1 {
+		display : inline-block;
+		margin-left : 40%;
+	}
+	label {
+		display : inline-block;
+		width : 100px;
+		height : 30px;
+		
+	}	
+	.gender{
+		width : 40px;
+	}
+	textarea{
+		width : calc(100% -1%);
+	}
+	div{	
+		margin : 50px auto;
+		width : 60%;
+		border : 1px solid #F5F6CE;
+		padding : 30px;
+		background : #F5F6CE;
+	}	
+	
+
+</style>
+
+
+
+
+</head>
+<body>
+
+<h1> 회원가입화면</h1>
+<br>
+<br>
+<div>
+<form action ="연습2.jsp" method = "post">
+<label>이름</label>
+<input required = "required" type ="text" id ="name" name ="name" autofocus ="autofocus"><br>
+
+<label>주소</label>
+<input required = "required" type = "text" id = "addr" name = "addr"><br>
+
+<label>email</label>
+<input type = "text" name= "etext"><br><br>
+
+<label class = "gender"><strong>성별</strong></label>
+		<input type = "radio" value ="남자" name = "gender" >남자
+		<input type = "radio" value ="여자" name = "gender" >여자
+<br>
+<br>
+<br>	
+ 	
+
+<label><strong>한마디!</strong></label><br>
+<textarea rows ="10" cols ="50" name ="area" id="area"></textarea>
+<br>
+<br>
+
+	
+		
+
+
+<br>
+<br>
+
+<input type="submit" value = "send">
+<input type = "reset" value = "초기화">
+
+</form>
+</div>
+
+
+
+</body>
+</html>
