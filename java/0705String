@@ -1,0 +1,132 @@
+package d_array;
+
+
+import java.util.Scanner;
+
+public class StringArray {
+
+
+	public static void main(String[] args) {
+		
+		
+		for(String arg :args){
+			System.out.println(arg);
+		}
+		
+		
+		
+		String s = new String("ABCD"); //참조형 타입을 초기화 하는 방법
+		String str = "ABCD"; //String은 특별히 간단하게 초기화 가능
+		
+		char[] charArray = str.toCharArray(); //String 클래스 내부에 문자배열을 가지고 있다.
+		System.out.println(charArray); //char 배열은 특별히 배열의 내용이 출력된다.
+		
+		//String 클래스 내부에 문자배열을 다루는 여러가지 매서드가 정의되어 있다.
+		
+		/*
+		 * <<String의 주요 매서드>>
+		 * 
+		 * - equals(String) : 문자열의 내용이 같은지 확인한다.
+		 * - length() : 문자열의 길이를 반환한다.
+		 * - charAt(int) : 문자열에서 해당 위치에 있는 문자를 반환한다.
+		 * - substring(int, int) : 문자열에서 해당 범위에 있는 문자열을 반환한다.
+		 * - indexOf(String) : 문자열 내의 특징 문자열의 인덱스를 반환한다.
+		 * - replace(String , String) : 문자열 내의 특정 문자열을 원하는 문자열로 변경해 반환한다.
+		 * 
+		 */
+		
+		for(int i = 0; i < str.length() ; i++){
+			System.out.println(str.charAt(i)); // sysout이라고 치고 ctrl+space //문자열의 1글자씩 반환하고 싶을때 출력하는 방법
+		
+		}
+		
+		String revStr = ""; //str을 거꾸로 담을 변수
+		
+		for(int  i= str.length()-1 ; i >=0; i--){
+			revStr += str.charAt(i);
+		}
+		System.out.println(revStr);
+		
+		str = "치킨 피자 돈까스 떡볶이";
+		int idx = str.indexOf("피자"); //피자의 시작 인덱스를 반환한다.
+		System.out.println(idx);
+		
+		str = "0123456789";
+		String sub1 = str.substring(3);//3번 인덱스부터 잘라서 반환한다.
+		System.out.println(sub1);
+		String sub2 = str.substring(5,8); // 5번 인덱스 부터 8번 인덱스 전까지 잘라서 반환한다.
+		System.out.println(sub2);
+		
+		//subString과 indexOf를 조합해서 문자열을 가져올 수 있다.
+		String[] menus = {
+				"치킨 18000원",
+				"피자 9900원",
+				"돈까스 8000원",
+				"떡볶이 5000원"
+		};
+	
+		for(String menu : menus){
+			String name = menu.substring(0,menu.indexOf(" "));
+			System.out.println(name);
+			int price = Integer.parseInt(menu.substring(menu.indexOf(" ")+1 , menu.indexOf("원")));
+			System.out.println(price);
+		}	
+		
+		//가격만 분리시켜 in타입의 변수에 담아주세요.
+		//--내가푼거--
+//		for(String menu1 : menus){
+//			String name1 = (menu1.substring(menu1.indexOf(" ")+1 , menu1.indexOf("원")));
+//			int num =Integer.parseInt(name1);
+//			System.out.println(num);
+//		}
+		
+	
+		str ="123456789";
+		str = str.replace("3","짝");
+		str = str.replace("6","짝");
+		str = str.replace("9","짝");
+		System.out.println(str);
+		
+		String pn = "010-1234-5678";
+		//하이픈(-)을 제거해서 출력해주세요.
+		pn = pn.replace("-","");
+		System.out.println(pn);
+
+		
+		setComma();
+		
+		
+		
+	}
+	
+
+	private static void setComma() {
+		//숫자를 입력받아 입력받은 숫자에 3자리 마다 콤마(,)를 붙여 출력해주세요.
+		
+			//1.숫자를 입력받는다.
+		 	//2.컴마붙은 숫자를 저장할 변수를 만든다.
+			//3.카운팅할 변수를 만든다.
+			//4.입력한 숫자를 뒤에서 한글자씩 가져오기 위해 반복문을 거꾸로 돌린다.
+			//5.한글자를 가져와서 새로운 변수에 담는다.
+			//6.카운팅을 한다.	
+			//7.카운팅이 3배수일때 컴마를 새로운 변수에 담는다.
+			//8.결과를 출력한다.
+		Scanner s = new Scanner(System.in);
+		System.out.println("숫자입력>");//1
+		String number = s.nextLine();
+			String newNumber ="";//2
+		int cnt = 0;//3
+		for (int i = number.length()-1 ; i>=0; i--){//4
+			newNumber = number.charAt(i) + newNumber;//5
+			cnt++;//6
+			if(cnt%3 == 0 && cnt != number.length()){//7
+				newNumber = "," + newNumber;
+			}
+		}
+		
+	System.out.println(newNumber);//8
+		
+		
+	}
+
+}
