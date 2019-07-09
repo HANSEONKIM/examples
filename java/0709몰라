@@ -1,0 +1,101 @@
+String[] students = { "강범준", "강서현", "강훈", "김상현" };
+
+		String[] subjects = { "Java", "Oracle", "HTML", "CSS", "JQuery", "JSP" };
+		float[][] scores = new float[students.length][students.length + 3];
+
+		// 점수를입력한다.,
+		for (int i = 0; i < scores.length; i++) {
+			scores[i][0] = 1;
+			for (int j = 0; j < subjects.length; j++) {
+				scores[i][j + 1] = (int) (Math.random() * 51) + 50;
+			}
+
+		}
+		// 총점과 평균을 구한다.
+		for (int i = 0; i < scores.length; i++) {
+			for (int j = 0; j < subjects.length; j++) {
+				scores[i][scores[i].length - 2] += scores[i][j + 1];//총점
+			}
+			scores[i][scores[i].length - 1] = (int) ((float) scores[i][scores[i].length - 2]
+					/ subjects.length * 100 + 0.5) / 100f;
+
+		}
+		// 순위를 매긴다.
+		for (int i = 0; i < scores.length; i++) {
+			for (int j = 0; j < scores.length; j++) {
+				if (scores[i][scores[i].length - 1] < scores[j][scores[j].length - 1]) {
+					scores[i][0]++;
+				}
+			}
+		}
+
+		// 순위대로 정렬한다.
+		for (int i = 0; i < scores.length ; i++) {
+			for (int j = i + 1; j < scores.length; j++) {
+				if (scores[i][0] > scores[j][0]) {
+					float[] temp = scores[i];
+					scores[i] = scores[j];
+					scores[j] = temp;
+
+					String tempName = students[i];
+					students[i] = students[j];
+					students[j] = tempName;
+				}
+			}
+
+		}
+
+		System.out.print("순위\t이름");
+		for (int i = 0; i < subjects.length; i++) {
+			System.out.print("\t" + subjects[i]);
+		}
+		System.out.println("\t총점\t평균\t등급");
+		for (int i = 0; i < scores.length; i++) {
+			System.out.print((int) scores[i][0] + "\t" + students[i]);
+			for (int j = 1; j < scores[i].length; j++) {
+
+				if (j == scores[i].length - 1) {
+					System.out.print("\t" + scores[i][j]);
+				} else {
+					System.out.print("\t" + (int)scores[i][j]);
+				}
+			}
+			float score = scores[i][scores[i].length - 1];
+			String grade = null;
+
+			if (90 <= score) {
+				grade = "A";
+				if (97 <= score) {
+					grade += "+";
+				} else if (score <= 93) {
+					grade += "-";
+				}
+			} else if (80 <= score) {
+				grade = "B";
+				if (87 <= score) {
+					grade += "+";
+				} else if (score <= 83) {
+					grade += "-";
+				}
+			} else if (70 <= score) {
+				grade = "C";
+				if (77 <= score) {
+					grade += "+";
+				} else if (score >= 73) {
+					grade += "-";
+				}
+			} else if (60 <= score) {
+				grade = "D";
+				if (67 <= score) {
+					grade += "+";
+				} else if (63 <= score) {
+					grade += "-";
+				}
+			} else {
+				grade = "F";
+			}
+			System.out.println("\t" + grade);
+		}
+
+	}
+}
