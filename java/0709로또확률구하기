@@ -1,0 +1,119 @@
+package d_array.lotto;
+
+import java.util.Arrays;
+
+public class lotto {
+
+	static int[][] lottoNumbers = LottoHistory.WIN_NUMBERS;
+
+	public static void main(String[] args) {
+		// 홀짝 출현 확률
+		oddEven();
+		
+		// 각 숫자 출현 확률
+		appearance();
+		
+		//숫자 반복 출현 확률
+		repeat();
+
+	}
+
+	private static void repeat() {
+		
+		int [] counts = new int [lottoNumbers[0].length];
+		
+		for (int i =lottoNumbers.length-1 ; i <=0; i--) {
+			int count = 0;
+			for (int j = 0; j < lottoNumbers[i].length; j++) {
+				for(int k = 0; k <lottoNumbers[i-1].length; k++){
+					if(lottoNumbers[i][j] == lottoNumbers[i-1][k]){
+						count++;
+					}
+				}
+				
+			}
+			if(0<count){
+				counts[count -1]++;
+			}
+		}
+		float[] percents = new float[counts.length];
+		for (int i = 0; i < counts.length; i++) {
+			percents[i] = (int) ((float) counts[i]
+					/ (lottoNumbers.length * lottoNumbers[0].length) * 1000) / 10f;
+	}
+		
+		for(int i = 0; i < counts.length){
+			
+		}
+		
+		
+		
+		
+		
+		
+	}
+
+	private static void appearance() {
+
+		int[] counts = new int[45];
+
+		for (int i = 0; i < lottoNumbers.length; i++) {
+			for (int j = 0; j < lottoNumbers[i].length; j++) {
+				counts[lottoNumbers[i][j] - 1]++;
+			}
+		}
+		int[] no = new int[45];
+		for (int i = 0; i < no.length; i++) {
+			no[i] = i + 1;
+		}
+		for (int i = 0; i < counts.length - 1; i++) {
+			for (int j = i + 1; j < counts.length; j++) {
+				if (counts[i] < counts[j]) {
+					int temp = counts[i];
+					counts[i] = counts[j];
+					counts[j] = temp;
+					
+					temp = no[i];
+					no[i] = no[j];
+					no[j] = temp;
+				}
+			}
+		}
+		float[] percents = new float[counts.length];
+		for (int i = 0; i < counts.length; i++) {
+			percents[i] = (int) ((float) counts[i]
+					/ (lottoNumbers.length * lottoNumbers[0].length) * 1000) / 10f;
+	}
+	
+		System.out.println("순위\t번호\t출현횟수\t출현확률");
+		for(int i = 0; i< counts.length; i ++){
+			System.out.println(i + 1+ "\t" + no[i] +"\t" + counts[i] + "\t" + percents[i]);
+		}
+
+	}
+
+	private static void oddEven() {
+
+		int[] counts = new int[2];
+		for (int i = 0; i < lottoNumbers.length; i++) {
+			for (int j = 0; j < lottoNumbers[i].length; j++) {
+
+				if (lottoNumbers[i][j] % 2 == 1) {
+					counts[0]++;
+				} else {
+					counts[1]++;
+				}
+			}
+		}
+		// 확률을 구한다.
+		float[] percents = new float[counts.length];
+		for (int i = 0; i < counts.length; i++) {
+			percents[i] = (int) ((float) counts[i]
+					/ (lottoNumbers.length * lottoNumbers[0].length) * 1000) / 10f;
+
+			// 출력한다.
+		}
+		System.out.println("홀 출력확률 : " + percents[0] + "%");
+		System.out.println("짝 출력확률 : " + percents[1] + "%");
+	}
+}
