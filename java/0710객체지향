@@ -1,0 +1,92 @@
+package e_oop;
+
+public class OOP {
+
+	public static void main(String[] args) {
+		/*
+		 * <<객체지향 프로그래밍>>
+		 * - 프로그래밍을 단순히 코드의 연속으로 보는것이 아니라 객체간의 상호작용으로 보는것
+		 * - 코드의 재사요이 높고 유지보수가 용이하다.
+		 * 
+		 * 
+		 * <<클래스의 구성>>
+		 * - 클래스 파일의 가진 첫줄에는 패키지(Package)를 선언한다.
+		 * - 패키지와 클래스 선언 사이에 임포트(import)를 선언한다.
+		 * - 클래스 선언 : [제이지]class 클래스명[상속]{}
+		 * - 변수와 메서드로 구성할 수 있다.
+		 * 
+		 * <<전역변수와 지역변수>>
+		 * - 위치에 따라 전역변수와 지역변수로 나누어진다.
+		 * - 매서드 밖에 있는 변수는 전역변수로 모든 메서드가 사용할 수 있따.
+		 * - 매서드 안에 있는 변수는 지역변수로 해당 메서드에서만 사용할 수 있다.
+		 * 
+		 * <<매서드>>
+		 * -[제어자] 리턴타임 메서드([매개변수]) {return}
+		 * - 매서드명([인자]); -> 메서드 호출과 리턴값 존재시 리턴값 반환
+		 * - 참조형 매개변수는 메서드에서 수행한 연산이 변수에 반영된다.
+		 * 
+		 * <<객체지향 (인스턴스화)>> 
+		 * - new 클래스명(); -> 객체가 저장된 메모리 주소
+		 * - 객체를 저장한 변수뒤에 참조연산자(.)를 붙여 객체의 변수와메서드에 접근할 수 있다.
+		 * - 객체는 생성될때마다 새로운 객체가 생성되고, 여러개의 객체가 동시에 존재할 수 있다.
+		 *
+		 * 
+		 * 
+		 */
+		
+		SampleClass sc =  new SampleClass(); //객체생성 (인스턴스화) //괄호가 붙어있는건 무조건 메서드이다. //클래스사용하고 싶을대 객체 생성하면 됨.
+		
+		sc.method1(); //d이거를 실행하면 메서드에 있는 내용이 실행됨 ........
+		
+		sc.method2(100); //타입에 맞는 파라미터를 남겨준다.
+		
+		String method3 = sc.method3();  // -> "결과를 받아라."
+		System.out.println(method3);
+		
+		int method4 = sc.method4(5);
+		System.out.println(method4);
+		
+		
+		//Calculator 클래스를 사용해 다음을 계산해 주세요.
+		//1.123456+654321
+		//2. 1번의결과값 * 123456
+		//3. 2번의 결과값 / 123456
+		//4. 3번의 결과값 - 654321
+		//5. 4번의 결과값 % 123456
+		
+		
+		Calculator ca = new Calculator();
+		
+		
+		double sum = ca.sum(123456,654321);
+		double mul = ca.mul(sum,123456);
+		double div = ca.div(mul,123456);
+		double mi = ca.mi(div,654321);
+		double rem = ca.rem(mi,123456);
+		
+		System.out.println((int)rem);
+		
+		//전원,온도,풍량의 속성을 가진 에어컨 클래스를 만들어 주세요. 매서드 총 5개(전원, 온도+- 풍량+-)
+		
+		AirConditioner ac = new AirConditioner();
+		
+		boolean poweron = ac.poweron();
+		System.out.println(poweron);
+		boolean poweroff = ac.poweroff();
+		System.out.println(poweroff);
+		int tempUp = ac.tempUp();
+		System.out.println("현재 온도는 : " +tempUp);
+		int tempDown = ac.tempDown();
+		System.out.println("현재 온도는 : "+ tempDown);
+		int capUp = (int) ac.capUp();
+		System.out.println("현재 풍량은 : " + capUp);
+		int capDown = (int) ac.capDown();
+		System.out.println("현재 풍량은 : " +capDown);
+		
+		
+		
+		
+		
+	}
+
+}
