@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel = "stylesheet" href = "../css/mystyle.css">
+
+
+<script>
+	function checkSu(){
+		
+		x = prompt("수를 입력 하세요", "1~100");
+		
+		if (x>=60)
+			result1 = "합격";
+		else
+			result1 = "불합격";
+		
+		str = "입력점수 : " + x + "<br>";
+		str += "결과 : " + result1 +"<br>";
+		
+		document.getElementById('result1').innerHTML = str;
+	}
+	
+	function checkGrade(){
+		
+		y = prompt ("점수를 입력하세요");
+		
+		if (y>=90)
+			result2 = "A학점입니다.";
+			else if(y>=80)
+				result2 = "B학점입니다.";
+			else if(y>=70)
+				result2 = "C학점입니다.";
+			else if(y>=60)
+				result2 = "D학점입니다.";
+			else
+				result2 = "F학점입니다...";
+		
+		str2 = "입력점수 : " + y + "<br>";
+		str2 += "결과 : " + result2 +"<br>";
+		
+		document.getElementById('result2').innerHTML = str2;
+		
+	}
+	
+	
+	
+</script>
+
+</head>
+<body>
+
+<pre>
+prompt를 이용하여 1개의 수를 입력받는다.
+60보다 큰지 비교해서 크면 합격 크지 않으면 불합격 출력
+출력은 div에 한다. innerHTML , textContent
+</pre>
+<button type = "button" onclick = "checkSu()">실행</button>
+<br>
+<div id = "result1"></div>
+
+<br>
+<br>
+
+<pre>
+prompt를 이용하여 1개의 수를 입력받는다.
+입력한 값을 비교해서 A-F학점을 출력한다.
+출력은 div에 한다. innerHTML , textContent
+</pre>
+<button type = "button" onclick = "checkGrade()">실행</button>
+<br>
+<div id = "result2"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
