@@ -1,0 +1,168 @@
+package e_oop;
+
+public class Tv {
+
+	public static void main(String[] args) {
+
+		// 전원상태, 채널, 음량을 변경하는 메서드를 만들어 주세요.
+		// TV객체 생성시 이름을 지정할 수 있게 해주세요.
+		// 채널과 음량은 제한을 해주세요.
+		// TV상태 변경 후 현재 상태가 출력되게 해주세요.
+//		System.out.println("tv이름?" +name);
+//		System.out.println("현재 채널은" + channel);
+//		System.out.println(channelUp);
+//		
+//		
+		Tv tv1 = new Tv("티비티비티비");
+		Tv tv2 = new Tv("티브이dddd");
+		
+		tv1.power();
+		tv2.power();
+		
+		tv1.changeChannel(200);
+		tv1.channelDown();
+		tv2.changeChannel(0);
+		
+		
+		tv1.volumUp();
+		tv2.volumUp();
+		tv1.volumUp();
+		tv1.volumUp();
+		tv1.volumUp();
+		tv1.volumUp();
+		tv1.volumUp();
+		tv1.volumUp();
+		tv1.volumUp();
+		tv1.volumUp();
+		tv1.volumUp();
+		tv1.volumUp();
+		tv1.volumUp();
+	}
+//
+//	static String name = "한선tv";
+//
+//			
+//	
+//	
+//
+//	boolean power; // 전원상태
+//	static int channel = 9; // 채널
+//	int volume; // 음량
+//
+//	void power() {
+//		power = !power;
+//	}
+//
+//	void changeChannel(int channel) {
+//		this.channel = channel;
+//		if(power){
+//			System.out.println("현재 채널은" + channel + "입니다.");
+//		}else{
+//			System.out.println("--------------");
+//		}
+//	}
+//
+//	void channelUp() {
+//		channel++;
+//		if(power){
+//			System.out.println("현재 채널은" + channel + "입니다.");
+//		}
+//			
+//		
+//	}
+//
+//	void channelDown() {
+//		channel--;
+//		if(channel>0){
+//			System.out.println("현재 채널은" + channel + "입니다.");
+//		}else{
+//			System.out.println("현재 채널은" + channel + "입니다.");
+//		}
+//		}
+//		
+//
+//	void volumeUp() {
+//		volume++;
+//	}
+//
+//	void voumeDown() {
+//		volume--;}
+		
+		String name;
+		boolean power; //전원상태
+		int channel; //채널
+		int volume; //음량
+		
+		final int CHANNEL_MIN = 1;
+		final int CHANNEL_MAX = 200;
+		final int VOLUME_MIN = 5;
+		final int VOLUME_MAX = 10;
+		
+		
+		//TV 생성시에 이름ㅇ르 지정해주기 위한 생성자
+		
+		
+		Tv(String name){
+			this.name = name;
+			power = false;
+			channel = 1;
+		}
+		
+		
+
+		//전원변경 메서드
+		
+		void power(){
+			power = !power;
+			showState();
+		}
+		
+		//채널변경 메서드
+		void changeChannel(int channel){
+			//채널이 1~200사이인 경웸나 채널 변경
+			if(CHANNEL_MIN <= channel && channel <= CHANNEL_MAX){
+				this.channel = channel;
+			}
+			showState();
+		}
+		
+		//채널 + 메서드
+		void channelUp(){
+			changeChannel(channel + 1);
+			showState();
+			
+		}
+		//채널 - 메서드
+		void channelDown(){
+			changeChannel(channel - 1);
+			showState();
+		}
+		
+		//음량 + 메서드
+		
+		void volumUp(){
+			//음량이 10보다 작을 때만높임
+			if(volume < VOLUME_MAX){
+				volume++;
+			}showState();
+		}
+		
+		//음량 - 메서드
+		void volumDown(){
+			//음량이 10보다 작을 때만높임
+			if(volume > VOLUME_MIN){
+				volume--;
+			}
+			showState();
+		}
+		
+		//현재 상태 출력
+		
+		void showState(){
+			String power = this.power ? "ON" : "OFF";
+			System.out.println(name + "의 상태 (전원 :" + power + "/채널 : " + channel + "/음량 : " + volume + ")");
+		}
+		
+		
+	}
+
