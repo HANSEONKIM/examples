@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+
+	function proc1(){
+		
+		//입력
+		first = prompt("첫번째 사람 입력","가위,바위,보");
+		second = prompt("두번째 사람 입력","가위,바위,보");
+		
+		if(first ==second){
+			
+			res = "비겼습니다";
+			
+		}else if (first =="가위" && second == "보" || first =="바위" && second == "가위" || first =="보" && second == "바위"){
+			res = "이겼습니다";
+		}else{
+			res = "졌습니다.";
+		}
+		
+		
+		str  = "첫번째 사람" + first + "<br>";
+		str += "두번째 사람 " + second + "<br>";
+		str += "결과" + res;
+		
+		document.getElementById('result1').innerHTML = str;
+		
+		
+	}
+
+
+
+</script>
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+
+	<div class="box">
+		<h2>두사람의 가위바위보를 입력</h2>
+		-입력은 prompt(), 출력은 div에 숫자를 출력<br> <br>
+
+		<button type="button" onclick="proc1()">가위바위보</button>
+		<br> <br>
+		<div id="result1"></div>
+
+
+	</div>
+</body>
+</html>
