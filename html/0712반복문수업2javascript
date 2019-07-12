@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+	function proc1() {
+
+		nums = ""; //문자열 변수
+		sum = 0; //숫자
+
+		while (true) {
+			a = parseInt(prompt("입력", "0이면 종료"));
+
+			if (a == 0)
+				break;
+
+			nums += a + ",";
+			sum += a;
+
+		}
+
+		document.getElementById('result1').innerHTML = "입력값 : " + nums + "<br>";
+		document.getElementById('result1').innerHTML += "합???? : " + sum;
+	}
+	
+	
+	function proc2(){
+		
+		//입력
+		while(true){
+		a =prompt("숫자를 입력하시오","10이상");
+		
+			
+			if(a >= 10)break;
+			
+		}
+		
+		
+		//a값이 10 이상이 아니면 다시 입력 하라.
+		
+		
+		
+		//문자용 누적변수
+		sum = "";
+		
+		//for문 반복
+		for (i=1; i<=a;i++){
+			if(i%2 !=0)continue;
+			sum += i + " ";
+			
+		}
+		
+		//출력
+		document.getElementById('result2').innerHTML = sum;
+		}
+	
+	
+	
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1.while</h2>
+		- prompt를 이용하여 입력<br> - 0을 입력하면 종료<br> -출력시 입력한 모든 값을 출력<br>
+		<button type="button" onclick="proc1()">실행</button>
+		<br> <br>
+		<div id="result1"></div>
+
+
+	</div>
+
+	<div class="box">
+		<h2>2.while</h2>
+		- prompt를 이용하여 입력<br>
+		-1~입력한 수 까지 1씩 증가하면서  짝수를출력한다<br>
+		- 입력한 수가 10 미만이면 다시 입력한다.<br>
+		-continue를 이용한다.<br>
+		<br>
+		<button type="button" onclick="proc2()">실행</button>
+		<br> <br>
+		<div id="result2"></div>
+
+
+	</div>
+
+
+
+
+
+
+
+</body>
+</html>
