@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+	
+	function proc1(){
+		
+		var array = ["사과","바나나","복숭아","자두","수박"];
+		
+		res = array + "<br>";
+		for(i=0; i<array.length ; i++){
+			
+			res += array[i] + " ";
+		}
+		
+		
+		//document.getElementById('result1').innerHTML = res;
+		result = document.getElementById('result1');
+		result.innerHTML = res;
+	}
+	
+	function proc2(){
+		
+		array = new Array ("사과","바나나","복숭아","자두","수박");
+		
+		//배열을 거꾸로 출력
+		res = "거꾸로 출력<br>";
+		for(i=array.length-1; i>=0 ; i --){
+			res += array[i] + "<br>";
+			
+		}
+		//document.getElementById('result2').innerHTML = res;
+		result = document.getElementById('result2')
+		result.innerHTML = res;
+	}
+	
+	
+	function proc3(){
+		
+		array = new Array();
+		
+		array[0] = "사과";
+		array[1] = "포도";
+		array[2] = "키위";
+		array[3] = "참외";
+		array[4] = "메론";
+		
+		res = "";
+		for(i = 0; i <array.length;i++){
+			
+			res += i + "번 째 요소 : " + array[i] + "<br>";
+			
+		}
+		//document.getElementById('result3').innerHTML = res;
+		result = document.getElementById('result3')
+		result.innerHTML = res;
+	}
+
+	
+	
+	
+</script>
+
+
+</head>
+<body>
+
+	<div class = "box">
+	
+		<h2> 01. Array 리터럴 생성</h2>
+		var arry = ["사과","바나나","복숭아","자두","수박"]
+		<br><br>
+		<button type = "button" onclick = "proc1()">array1</button>
+		<br>
+		<div id = "result1"></div>
+	
+	</div>
+	
+	<div class = "box">
+	
+		<h2> 02. Array 리터럴 생성</h2>
+		var arry = new Array("사과","바나나","복숭아","자두","수박")
+		<br><br>
+		<button type = "button" onclick = "proc2()">array2</button>
+		<br>
+		<div id = "result2"></div>
+	
+	</div>
+	
+	
+	<div class = "box">
+	
+		<h2> 03. Array 리터럴 생성</h2>
+		var arry = new Array();
+		<br><br>
+		<button type = "button" onclick = "proc3()">array3</button>
+		<br>
+		<div id = "result3"></div>
+	
+	</div>
+
+
+
+
+
+</body>
+</html>
