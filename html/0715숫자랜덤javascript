@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+	function proc1() {
+
+		//시작버튼을 안보이게 하기
+
+		document.getElementById('start').style.display = 'none';
+		start.style.display = 'none';
+		
+		a = window.setInterval(function(){
+			
+			
+			console.log(a);
+			//랜덤 1~100
+			rand = "";
+			for (i = 0; i < 5; i++) {
+				if(i > 0) rand += ",";
+				rand += Math.floor(Math.random() * 100 + 1) ; 
+			}
+			
+			
+			document.getElementById('result1').innerHTML += rand + "<br>";
+			
+			},500);
+		
+		
+		
+	}
+	
+	
+	function procStop(){
+		
+		bstart = document.getElementById('start')
+		bstart.style.display = 'inline-block';
+		
+		clearInterval(a);
+	}
+	
+</script>
+<style>
+	div {
+	height : 500px;
+	overflow : auto;
+	margin-bottom : 20px;
+	
+	}
+
+</style>
+
+</head>
+<body>
+	
+	<div class="box">
+		<h2>랜덤발생</h2>
+		<br> 1. 1~100사이의 랜덤 숫자를 발생시켜서 5개씩 출력<br> 
+		2. 1번 과정을 무한 반복<br>
+		3. setInterval(function() { } , millisec )
+			-millisec의 단위마다 function을 수행한다.<br>
+		 <br>
+		<button type="button" id = "start" onclick="proc1()">Start</button>
+		<button type="button" id = "stop" onclick="procStop()">Stop</button>
+		<br> <br>
+		<h3>출력위치</h3>
+		<div id="result1"></div>
+
+
+	</div>
+
+</body>
+</html>0715
