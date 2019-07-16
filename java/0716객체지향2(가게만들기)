@@ -1,0 +1,136 @@
+package f_oop2;
+
+import java.util.Vector;
+
+public class Store {
+
+	public static void main(String[] args) {
+		Customer c = new Customer();
+		
+		Desktop d = new Desktop();
+		System.out.println(d.getInfo());
+		
+		
+		Laptop l = new Laptop();
+		System.out.println(l.getInfo());
+		
+		TV t = new TV();
+		System.out.println(t.getInfo());
+		
+		c.buy(d);
+		c.buy(l);
+		c.buy(t);
+		c.showItem();
+	}
+
+}
+//부모클래스로 사용할 클래스를 만듬//
+class Product{
+	int price;
+	int point;
+	
+	//생성자에서 가격과 포인트를 초기화
+	
+	Product(int price){
+		this.price = price;
+		point = price/10;
+	}
+	
+	//상품의 정보를 반환하는 메서드
+	String getInfo(){
+		return "가격 : " + price + "원 / 포인터 : " + point + "점";
+	}
+}
+
+class Desktop extends Product{
+	
+	Desktop(){
+		super(1000);
+	}
+	
+	@Override
+	String getInfo(){
+		return "Desktop - " + super.getInfo();
+	}
+	
+	public String toString(){
+		return "Desktop";
+	}
+}
+
+class Laptop extends Product{
+	
+	Laptop(){
+		super(2000);
+	}
+	@Override
+	String getInfo(){
+		return "Laptop - " + super.getInfo();
+	}
+	
+	public String toString(){
+		return "Laptop";
+	}
+}
+
+
+class TV extends Product{
+	
+	TV(){
+		super(5000);
+	}
+	@Override
+	String getInfo(){
+		return " TV - " + super.getInfo();
+		
+	}
+	public String toString(){
+		return "TV";
+	}
+}
+
+
+
+class Customer{
+	int money = 100000;
+	int point = 0;
+	
+	Vector<Product> item = new Vector<Product>();
+	
+	void buy(Product p){
+		if(money < p.price){
+			System.out.println("잔돈이 부족해ㅠ_ㅠ");
+			return;
+				
+		}
+		money -= p.price;
+		point += p.point;
+		
+		item.add(p);
+		System.out.println(p+ "샀다.");
+	
+	}
+	void showItem(){
+		String items = "아이템 목록 : ";
+		
+		for(Product item : this.item){
+			items += " " + item;
+		}
+		System.out.println(items);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
