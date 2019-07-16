@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+	str = ["홍길동","개나리","진달래","무궁화","홍길동","수선화","라일락","홍길동","홍길동","홍길동","수선화","라일락","홍길동","홍길동","수선화","라일락","홍길동","홍길동"]
+	function proc1(){
+		
+	 a = prompt ("이름을 입력하세요"); //var 붙이면 지역변수 안붙이면 전역변수
+		
+		idx = str.indexOf(a); // 변수는 ''안붙임 !! 
+		
+		document.getElementById('result1').innerHTML += "이름 : "+ a +"은  " +"앞에서부터 검색해서"+ idx +"번째에 있습니다"+ "<br>";
+	}
+
+	function proc2(){
+		a = prompt ( "이름을 일벽하세요");
+		
+		idx = str.lastIndexOf(a);
+		
+		document.getElementById('result2').innerHTML += "이름 : "+a+"은  "+"뒤에서부터 검색해서 앞에서  " +idx+"번째에 있습니다"+ "<br>";
+		
+		
+	}
+	
+	
+	function proc3(){
+		a = prompt ( "이름을 일벽하세요");
+		
+		res = "모든"+a + "찾기<br>";
+		idx = 0;
+		
+		while(true){
+			idx = str.indexOf(a, idx);
+			
+			if(idx == -1)break;
+			
+			res += idx + "번째<br> ";
+			idx++;
+		}
+		document.getElementById('result3').innerHTML = res;
+		
+	}
+	
+	function proc4(){
+		
+		a = prompt("이름을 입력하세요");
+		
+		res = "원래배열 ? : " + str + "<br>";
+		
+		str.push(a);
+		res += "추가한배열 ? : " + str + "<br>";
+		
+		document.getElementById('result4').innerHTML = res;
+		
+		
+	}
+
+</script>
+</head>
+<body>
+<h2>Array객체</h2>
+<br>
+<div class="box">
+		<h3>1. 이름 위치값 알아내기</h3>
+		str = ["홍길동","개나리","진달래","무궁화","홍길동","수선화","라일락","홍길동"]<br>
+		str = new Array("홍길동","개나리","진달래","무궁화","홍길동","수선화","라일락","홍길동")<br><br>
+		- 이름을 prompt를 이용해서 입력받는다.<br><br>
+		
+		
+		- indexOf("문자열") : 문자열 배열의 몇번째에 있는가? <br>
+		- 앞에서 부터 검색!	-문자열이 배열에 없으면 -1을 리턴. <br> <br>
+		-lastIndexOf() : 문자열 배열의 몇번째에 있는가?<br>뒤에서부터 검색하는 것 **실행면에서 더 효율적임 !**
+		-문자열이 배열에 없으면 -1을 리턴.<br> <br>
+		-모든 홍길동 찾기<br>
+		 : 처음 홍길동을 찾고, 그 이후로 계속 찾는다
+		<br><br>
+		<button type="button" onclick="proc1()">indexOf실행</button>
+		<button type="button" onclick="proc2()">lastIndexOf실행</button>
+		<button type="button" onclick="proc3()">같은 문자열 모두 찾기</button>
+		
+		<br> <br>
+		<div id="result1"></div><br>
+		<div id="result2"></div><br>
+		<div id="result3"></div><br>
+
+	</div>
+	
+	<div class="box">
+		<h3>배열에 추가/제거</h3>
+		- prompt를 이용해서 입력<br>
+		 -push() : 배열의 맨 마지막으로 추가 <br> 
+		- pop : 배열의 마지막값을 제거<br><br>
+		<button type="button" onclick="proc4()">push</button>
+		<button type="button" onclick="proc5()">pop</button>
+		<br> <br>
+		<div id="result4"></div>
+		<div id="result5"></div>
+	</div>
+
+</body>
+</html>
