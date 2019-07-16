@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+	function proc1() {
+
+		str = "입력한 수---------------------------------" + "<br>";
+		while (true) {
+
+			a = prompt("수를 입력");
+
+			if (a % 2 == 0) {
+				res = "짝수";
+			} else if (a % 2 == 1) {
+				res = "홀수";
+			} else {
+				res = "오류";
+			}
+			str += a + " : " + res + " " + "<br>";
+
+			b = confirm("계속할래?(y/n)")
+			if (!b)
+				break;
+		}
+		document.getElementById('result1').innerHTML = str;
+	}
+
+	function proc2() {
+
+		str = "";
+
+		while (true) {
+			a = prompt("수를 입력 하세요 !");
+			str += "ㅡㅡㅡㅡㅡㅡㅡㅡ" + a + "단" + "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" + "<br>";
+
+			for (i = 1; i < 10; i++) {
+				str += a + "*" + i + "=" + a * i + "<br>";
+			}
+			str += "<br>";
+			
+			document.getElementById('result2').innerHTML = str;
+			b = confirm("계속 하려면 확인 버튼, 그만하려면 취소버튼을 클릭하세요");	
+			if(!b) break;
+		}
+			
+	}
+</script>
+</head>
+<body>
+	<div class="box">
+		<h3>confirm</h3>
+		- 수행도중 질문을 하고 yes/no 대답을 기다릴 때 사용<br> <br> -숫자를 prompt를 이용해서
+		입력 <br> -짝수인지 홀수인지 판별하여 출력한다<br> -계속 또는 그만할 것인지 물어본다 <br>
+		- 대답은 받아서 처리 <br> <br> <br>
+		<button type="button" onclick="proc1()">실행</button>
+		<br> <br>
+		<div id="result1"></div>
+
+	</div>
+
+
+	<div class="box">
+		<h3>confirm2</h3>
+		- 수행도중 질문을 하고 yes/no 대답을 기다릴 때 사용<br> <br> -숫자를 prompt를 이용해서
+		입력 <br> -입력한 수의 구구단을 출력한다<br> -계속 또는 그만할 것인지 물어본다 <br>
+		- 대답은 받아서 처리 <br> <br> <br>
+		<button type="button" onclick="proc2()">실행</button>
+		<br> <br>
+		<div id="result2"></div>
+
+	</div>
+</body>
+</html>
