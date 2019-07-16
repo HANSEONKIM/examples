@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+	function proc1() {
+
+		//객체 생성 = 리터럴방식
+		var rect = {
+			width : 12,
+			height : 7,
+
+			getArea : function() {
+
+				return this.width * this.height;
+			}
+
+		}
+
+		//객체사용
+		rect.name = "네모네모";
+		res = "가로 :" + rect.width + "<br>";
+		res += "세로 : " + rect.height + "<br>";
+		res += "이름 : " + rect.name + "<br>";
+		res += "면적 : " + rect.getArea();
+
+		// 출력
+		// 	document.write(res);
+		document.getElementById('result1').innerHTML = res;
+
+	}
+	function proc2() {
+
+		//객체 함수 정의 : 자바의 클래스
+		function Rect(width, height) {
+
+			this.width = width;
+			this.height = height;
+
+			this.getArea = function() {
+				return this.width * this.height;
+			}
+		}
+
+		//생성자로 객체 생성
+
+		var rect1 = new Rect();
+		var rect2 = new Rect(10, 12);
+
+		//대입
+		rect1.width = 5;
+		rect1.height = 3;
+		//객체의 새로운 함수 속성추가
+
+		print(rect1);
+		print(rect2);
+		
+		var rect3 = new Rect(23,45);
+		var rect4 = new Rect(20,33);
+		var rect5 = new Rect(8,13);
+		
+		print(rect3);
+
+		print(rect4);
+
+		print(rect5);
+	}
+
+	num = 0;
+	
+	function print(rect) {
+		
+	//객체의 새로운 속성 name을 추가.
+		rect.name="사각형" + ++num;
+		//객체의 새로운 함수를 정의 추가
+		rect.getCricum = function() {
+			return (this.width + this.height) * 2;
+		}
+
+		//객체의 정보 얻기
+		res = "이름 = " + rect.name  + "<br>";
+		res += "가로 = " + rect.width + "<br>";
+		res += "세로 = " + rect.height + "<br>";
+		res += "면적 = " + rect.getArea() + "<br>";
+		res += "둘레 = " + rect.getCricum() + "<br>"+ "<br>";
+
+		//출력
+		document.getElementById('result2').innerHTML += res;
+
+	}
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h3>Rect객체</h3>
+		- 리터럴로 만드는 객체<br> - var rect = { } <br> 
+		- 객체에 새로운 속성이나 함수를 추가 할 수 있다.<br><br>
+		<button type="button" onclick="proc1()">실행</button>
+		<br> <br>
+		<div id="result1"></div>
+
+	</div>
+
+
+	<div class="box">
+		<h3>Rect객체2</h3>
+		- 생성자로 만드는 객체<br> - function rect(width , height){ } <br>
+		- 객체에 새로운 속성이나 함수를 추가할 수 있다. <br>
+		<br>
+		<button type="button" onclick="proc2()">실행</button>
+		<br> <br>
+		<div id="result2"></div>
+
+	</div>
+
+
+</body>
+</html>
