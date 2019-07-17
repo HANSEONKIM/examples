@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/mystyle.css">
+
+
+<script>
+
+		
+function proc1(){
+	
+	var str = [ ];
+	
+	
+	while(true){
+		
+	a = prompt("이름을 입력하시오");
+	
+	if(a == "" || a == null)break;
+	
+	str.push(a);
+	
+	}
+	
+	document.getElementById('result1').innerHTML = str;
+	
+}
+
+	function proc2(){
+		
+		var str = new Array();
+		
+		i=0; res = "";
+		
+		while(true){
+		
+				a = prompt(i + "번째 입력");
+				
+				res += a + " ";
+				
+				if(str.indexOf(a) == -1){
+					str.push(a);
+					i++;
+				}
+				if(i>4)break;
+			}
+	
+		document.getElementById('result2').innerHTML = "모든 입력 : " + res + "<br>";
+		document.getElementById('result2').innerHTML += "중복되지 않은 수 : "  + str;
+	}
+
+
+
+
+</script>
+
+
+
+</head>
+<body>
+
+	<div class="box">
+		<h3>1.이름을 읿력받아 배열에 저장하고 출력</h3>
+		- 입력은 prompt()<br> - prompt()에서 아무것도 입력하지 않거나 취소버튼 누르면 종료<br>
+		- 배열에 저장 : <br> <br>
+		<button type="button" onclick="proc1()">실행1</button>
+
+		<br> <br>
+		<div id="result1"></div>
+	</div>
+
+	<div class="box">
+		<h3>2. 중복되지 않는 점수 5개를 입력하고 출력</h3>
+		<br> - 입력은 prompt()<br> - 입력시 중복된 수를 입력하면 다시 입력한다.<br>
+		<br> <br>
+
+		<button type="button" onclick="proc2()">실행2</button>
+
+		<br> <br>
+		<div id="result2"></div>
+
+	</div>
+</body>
+</html>
