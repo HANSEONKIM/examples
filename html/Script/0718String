@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+
+	str = "        I love Korea "
+	
+	function proc1(){
+		
+		a = str.charAt(5);
+		
+		res = "원래 문자열 : " + str + "<br>";
+		res += "인덱스 5번 ( 일반6번)째 문자  : " + a;
+		
+		document.getElementById('result1').innerHTML = res;
+		
+	}
+
+
+	function proc2(){
+		
+		res = "원래 문자열의 길이  : " +str.length + "<br>";
+		
+		for(i=0; i <str.length;i++)
+		{
+			res += str[i] + "<br>";
+		
+		}
+		
+		str1= str.trim();
+		
+				
+		document.getElementById('result2').innerHTML = res + "<br>";
+		
+		
+		str1= str.trim();
+		res += " 공백 제거후  길이 : " + str1.length + "<br>";
+		
+		for(i=0; i <str1.length;i++)
+		{
+			res += str1[i] + "<br>";
+		
+		}
+		
+		
+		
+		document.getElementById('result2').innerHTML += res;	
+
+		
+	}
+	
+	function proc3(){
+		
+		//id가 name인 input 태그에 데이터가 입력되었는지 안되었는지 체크한다.
+	namevalue =	document.getElementById('name').value;
+		
+		if(namevalue.trim().length > 0)
+			
+			res = "입력된 데이터 " + namevalue;
+		
+		document.getElementById('result3').innerHTML = res;	
+
+	}
+
+</script>
+</head>
+<body>
+
+
+<div class="box">
+		<h3>1.String 객체</h3>
+		- charAt(인덱스) : 인덱스 번째의 글자를 가져온다.<br>
+		- trim() : 맨 앞과 앞뒤 공백을 제거한다.
+		<br>
+		<br>
+		<br>
+		<button type="button" onclick="proc1()">charAt</button>
+		<button type="button" onclick="proc2()">trim</button>
+
+		<br> <br>
+		<div id="result1"></div>
+		<div id="result2"></div>
+		<br><br>
+		공백을 입력하면 무시하도록 한다.
+		실제 데이터 앞에 있는 공백도 무시한다.
+		<br>
+		<br>
+		<input type = "text" id = "name"><br><br>
+		<button type="button" onclick="proc3()">공백체크</button>
+		<br><br>
+		<div id="result3"></div>
+	</div>
+
+
+
+
+</body>
+</html>
