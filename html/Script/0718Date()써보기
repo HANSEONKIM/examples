@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+	now = new Date();
+
+	function proc1() {
+
+		// 		now1 = new Date();
+		// 		now1 = new Date(1045674890000);
+		// 		now1 = new Date("2000.10.10");
+
+		now1 = new Date(2010, 11, 15, 17, 58, 55);
+
+		res = now1 + "<br>";
+		res += now1.toLocaleString() + "<br>";
+		res += now1.toDateString() + "<br>";
+		res += now1.toLocaleTimeString() + "<br>";
+
+		document.getElementById('result1').innerHTML = res + "<br>";
+
+	}
+
+	function proc2() {
+
+		day = now.getDay();
+
+		res = "오늘은 : " + now.toLocaleString() + "<br>";
+		switch (day) {
+
+		case 0:
+			res += "일요일";
+			break;
+		case 1:
+			res += "월요일";
+			break;
+		case 2:
+			res += "화요일";
+			break;
+		case 3:
+			res += "수요일";
+			break;
+		case 4:
+			res += "목요일";
+			break;
+		case 5:
+			res += "금요일";
+			break;
+		case 6:
+			res += "토요일";
+			break;
+		}
+
+		document.getElementById('result2').innerHTML = res + "입니다.";
+
+	}
+
+	function proc3() {
+
+		days = [ "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일" ];
+
+		a = now.getDay();
+		res = "오늘은 : " + now.toLocaleString() + "<br>";
+
+		res += days[a] + "입니다.";
+		document.getElementById('result3').innerHTML = res;
+	}
+
+	function proc4() {
+
+		birth = new Date("1993,3,6");
+
+		times = now.getTime() - birth.getTime();
+
+		res = "태어난 날 ▶ " + birth.toLocaleDateString() + "<br><br>";
+
+		res += "초 ▶ " + times / 1000 + "초가 지났습니다.<br><br>";
+
+		res += "분 ▶ " + times / 1000 / 60 + "분이 지났습니다.<br><br>";
+
+		res += "시간 ▶ " + times / 1000 / 60 / 60 + "시간이 지났습니다 . <br><br>";
+
+		res += "일 ▶ " + times / 1000 / 60 / 60 / 24 + "일이 지났습니다. <br><br>";
+
+		res += "년 ▶ " + times / 1000 / 60 / 60 / 24 / 365
+				+ "년이 지났습니다. <br><br>";
+
+		document.getElementById('result4').innerHTML = res;
+	}
+
+	function proc5() {
+
+		birth = new Date("2012,8,2");
+
+		times = now.getTime() - birth.getTime();
+
+		res = "만나기 시작한날 ▶ " + birth.toLocaleDateString() + "<br><br>";
+
+		res += "초 ▶ " + times / 1000 + "초가 지났습니다.<br><br>";
+
+		res += "분 ▶ " + times / 1000 / 60 + "분이 지났습니다.<br><br>";
+
+		res += "시간 ▶ " + times / 1000 / 60 / 60 + "시간이 지났습니다 . <br><br>";
+
+		res += "일 ▶ " + times / 1000 / 60 / 60 / 24 + "일이 지났습니다. <br><br>";
+
+		res += "년 ▶ " + times / 1000 / 60 / 60 / 24 / 365
+				+ "년이 지났습니다. <br><br>";
+
+		document.getElementById('result5').innerHTML = res;
+
+	}
+
+	function proc6() {
+
+		now.getTime()
+
+		//100일에 대한 밀리초
+
+		milli100 = 24 * 60 * 1000 * 100;
+
+		times = now.getTime() + milli100;
+
+		newDay = new Date(times);
+
+		res = "오늘 " + now.toLocaleDateString() + "<br>";
+		res += "100일 후 :  " + newDay.toLocaleDateString();
+
+		document.getElementById('result6').innerHTML = res;
+
+	}
+
+	function proc7() {
+
+		xmas = new Date("2019,12,25");
+
+		times = xmas.getTime() - now.getTime();
+
+		res = times / 1000 / 60 / 60 / 24 + "일 남았습니다<br>";
+
+		document.getElementById('result7').innerHTML = res;
+
+	}
+
+	function proc8() {
+
+	pvalue = document.getElementById('pdate').value;
+	
+	pday = new Date(pvalue);
+	
+	times = now.getTime() - pday.getTime();
+	
+	day = times / 1000/60/60/24;
+	
+	res = "오늘 날 짜 : " + now.toLocaleDateString()+"<br>";
+	res += "구입날짜 : " + pday.toLocaleDateString()+"<br>";
+	
+	if(day>7){
+		res += "환불 불가능";
+	}else{
+		res+= " 환불가능 ♥ ";
+	}
+
+	document.getElementById('result8').innerHTML = res;
+	
+	restext = "오늘 날 짜 : " + now.toLocaleDateString()+"\n";
+	restext += "구입날짜 : " + pday.toLocaleDateString()+"\n";
+	
+	
+	if(day>7) restext += " 환불가능"	;
+	else restext += "환불가능";
+	
+	document.getElementById('area').value = restext;
+	document.getElementById('area').style.fontSize ="1.5em";
+	}
+	
+</script>
+</head>
+<body>
+
+
+	<div class="box">
+		<h3>1. Date 객체생성</h3>
+		- now1 = new Date();<br> - now2 = new Date(10000000); 1970년 1월1일
+		기준으로 경과한 날짜와 시간<br> - now3 = new Date("2019.07.13");<br> -
+		now4 = new Date(2019,07,18,13,39,55); 설정된 월 수 보다 1 크게 값을 얻는다. 07월은
+		08월로 표시된다.<br> 10월을 얻기 위해서는 1 작게 설정 한다. 10월을 얻기 위해서 09로 설정한다. <br>
+		<br>
+		<button type="button" onclick="proc1()">실행</button>
+
+		<br> <br>
+		<div id="result1"></div>
+	</div>
+
+
+	<div class="box">
+		<h3>2. 요일구하기</h3>
+		- getDay() : 0(일요일)~6(토요일)의 값을 리턴한다.<br> - proc2() : switch case
+		를 이용<br> - proc3() : 배열을 이용한다.<br> <br> <br>
+		<button type="button" onclick="proc2()">switch실행</button>
+		<button type="button" onclick="proc3()">배열실행</button>
+		<br> <br>
+		<div id="result2"></div>
+		<div id="result3"></div>
+	</div>
+
+
+	<div class="box">
+		<h3>3. 경과시간 구하기</h3>
+		- getTime(): 밀리초 값을 리턴한다.<br> - 밀리초 - 초 : 밀리초 /1000;<br> <br>
+		<br> <br>
+		<button type="button" onclick="proc4()">태어난 날로부터</button>
+		<button type="button" onclick="proc5()">남자친구와 만난날로부터</button>
+		<button type="button" onclick="proc6()">오늘부터 100일후는</button>
+		<button type="button" onclick="proc7()">오늘부터 크리스마스</button>
+		<br> <br>
+		<div id="result4"></div>
+		<div id="result5"></div>
+		<div id="result6"></div>
+		<div id="result7"></div>
+	</div>
+
+	<div class="box">
+		<h3>4.경과시간구하기 : 환불</h3>
+
+		<br> <br> 구입날짜: <input type="date" id="pdate">
+		<button type="button" onclick="proc8()">환불</button>
+
+		<br> <br>
+		<div id="result8"></div>
+		<textarea id= "area" rows = "10"cols="50"></textarea>
+	</div>
+
+
+
+
+
+</body>
+</html>
