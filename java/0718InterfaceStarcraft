@@ -1,0 +1,73 @@
+package f_oop2.ex_interface;
+
+public class Starcraft {
+
+	public static void main(String[] args) {
+
+		Marine marine = new Marine();
+		Tank tank = new Tank();
+		Dropship dropship = new Dropship();
+		SCV scv = new SCV();
+		
+		scv.repair(tank);
+		scv.repair(dropship);
+//		Repairable을 상속받지 않아서 컴파일에러발생
+//		scv.repair(marine); 
+	}
+
+}
+
+class Unit {
+	int hp; // 현재체력
+	final int MAX_HP; // 최대체력
+
+	Unit(int hp) {
+		MAX_HP = hp;
+		this.hp = MAX_HP;
+	}
+
+}
+
+class Marine extends Unit {
+
+	Marine() {
+		super(40);
+	}
+}
+
+class Dropship extends Unit implements Repairable {
+
+	Dropship() {
+		super(125);
+	}
+}
+
+class Tank extends Unit implements Repairable {
+	Tank() {
+		super(150);
+	}
+}
+
+class SCV extends Unit implements Repairable{
+	SCV() {
+		super(60);
+	}
+
+	void repair(Repairable r) {
+		//Repairable 인터페이스를 상속받게 함으로써 수리가 가능한 유닛을 구분했다.
+		//그러나 Repairable에는 멤버가 없기 때문에 아무것도 할 수 없다.
+		//hp를 멤버로 가진 Unit으로 형변환을 해줘야한다.
+		if ( r instanceof Unit){ //Unit으로 형변환이 가능한지 확인 //instanceof는 앞에있는 객체가 뒤에 unit타입인지 확인하는거임.
+				Unit u = (Unit)r;
+				
+				while(u.hp++ < u.MAX_HP){
+					u.hp++;
+				}
+		}
+
+	}
+}
+
+interface Repairable {
+
+}
