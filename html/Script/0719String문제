@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+
+
+<script>
+
+function proc1(){
+	
+	num = "";
+	se = "";
+	
+	//주민번호 입력받기
+	a = prompt("주민번호를 입력하세요","123456-1234567");
+	
+	//주민번호 앞자리에서 2자리씩 추출한다. 991010
+	
+	year1 = a.substring(0,2);
+	month = a.substring(2,4);
+	day  = a.substring(4,6);
+	
+	//s= 주민번호 뒷자리에서 1자리를 추출한다.
+	
+	s = a.substring(7,8);
+	if(s==1||s==3){
+		se+= "남자";
+	}else {
+		se+= "여자";
+	}
+		
+	//s가 1이거나 3이면 남자, 2이거나 4이면 여자
+	
+	//s가 1이거나 2이면 1900, 3이거나 4이면 2000
+	if(s==1||s==2){
+		num += "19"+year1;
+	}else
+		num += "20"+year1;
+	
+	//현재년도를 구한다 now = new Date() now.getFullYear()
+	
+	var now = new Date();
+	var now1 = now.getFullYear();
+	
+	birth = now1 - num;
+	
+	//나이 = 현재년도 - 태어난년도
+	
+	
+	
+	document.getElementById('result1').innerHTML = "생일 : "+ num +"년"+month+"월"+day+"일" + "<br>"	;
+	document.getElementById('result1').innerHTML += "성별 : " + se +"<br>" + "나이 : " + birth;
+}
+
+
+
+</script>
+
+</head>
+<body>
+
+	<div class="box">
+		<h3>String 문제 1</h3>
+		- prompt 이용해서 주민번호 입력받기 : <br>
+		- 생일(생년월일),성별,나이 출력하기<br>
+		
+
+		<br> <br>
+		<button type="button" onclick="proc1()">문제1</button>
+		
+		<br> <br>
+		<div id="result1"></div>
+		
+		<br>
+	
+
+
+	</div>
+	
+
+
+
+
+
+</body>
+</html>
