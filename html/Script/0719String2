@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+
+
+<script>
+	str = "I Love Korea";
+	function proc1() {
+		lower = str.toLowerCase();
+
+		res = "원래 값 : " + str + "<br>";
+		res += "소문자 변경  : " + lower;
+
+		document.getElementById('result1').innerHTML = res;
+
+	}
+
+	function proc2() {
+
+		upper = str.toUpperCase();
+
+		res = "원래 값 : " + str + "<br>";
+		res += "대문자 변경  : " + upper;
+
+		document.getElementById('result2').innerHTML = res;
+
+	}
+	
+	function proc3(){
+		
+		
+		
+		
+		newstr = str.replace("Korea", "You♥");
+		
+		res = "원래 값 : " + str + "<br>";
+		res += "변경한 값  : " + newstr;
+
+		document.getElementById('result3').innerHTML = res;
+		
+		strarea = res.replace(/<br>/gi, "\r\n");
+		
+		document.getElementById('area').value =strarea;
+		document.getElementById('area').style.fontSize ="1.5em";
+		document.getElementById('area').style.padding ="20px";
+	
+	}
+	
+	function proc4(){
+		
+		a = str.substring(2, 6);
+		
+		
+		res = "원래 : " + str + "<br>";
+		res += "substring(2,6) : " + a + "<br>";
+		
+		document.getElementById('result4').innerHTML = res;
+		
+		a = str.substring(2);
+		res = "substring(2) : " + a;
+		
+		document.getElementById('result4').innerHTML += res;
+
+		
+	}
+	
+	function proc5(){
+		a = str.substr(2,4);
+		
+		res = "원래 : " + str + "<br>";
+		res += "str.substr(2,4) : " + a + "<br>";
+		
+		document.getElementById('result5').innerHTML = res;
+		
+		
+	}
+	
+	
+	function proc6(){
+		
+		a = str.slice(2,6);
+		
+		res = "원래 : " + str + "<br>";
+		res += "str.slice(2,6) : " + a + "<br>";
+		
+		document.getElementById('result6').innerHTML = res;
+	
+	}
+	
+	function proc7(){
+		
+		str = "홍길동/진달래/개나리/무궁화/라일락";
+		
+		res = "";
+		arr = str.split("/");
+		
+		for(i = 0; i <arr.length ; i++){
+			
+			res += i +"번째 :" + arr[i] + "<br>"; 
+		}
+		document.getElementById('result7').innerHTML = res;
+	}
+	
+
+	
+	function proc8(){
+		
+		imgs = document.getElementsByTagName('img');
+		
+		res = "";
+		
+		
+		for(i=0; i<imgs.length ; i++){
+			
+		vsrc = 	imgs[i].getAttribute('src');
+		
+		
+		
+		//마지막 /의 위치와 마지막. 의 위치를 얻어온다.
+		
+		start = vsrc.lastIndexOf("/")+1;
+		to = vsrc.lastIndexOf(".");
+		// 마지막 / 의 위치와 마지막 .의 위치 사이의 문자를 추출한다.
+		
+// 		vtitle = vsrc.substring(start,to);
+		vtitle = vsrc.slice(start,to);
+		// 추출한 값으로 tilte속성을 설정한다. = setAttribute('title',추출한 문자)
+		imgs[i].setAttribute('title',vtitle);
+		
+		res+= i + "번째의 title : "+ vtitle + "<br>";
+		
+	
+		}
+		
+		document.getElementById('result8').innerHTML = res;
+	}
+	
+	
+	
+</script>
+
+<style>
+img{
+	width : 100px;
+	hight : 100px;
+}
+
+</style>
+</head>
+<body>
+
+
+
+	<div class="box">
+		<h3>1.String 객체</h3>
+		- toLowerCase() : 소문자로 반환 <br> - toUpperCase() : 대문자로 반환 <br>
+		<br> <br>
+		<button type="button" onclick="proc1()">소문자반환</button>
+		<button type="button" onclick="proc2()">대문자반환</button>
+
+		<br> <br>
+		<div id="result1"></div>
+		<div id="result2"></div>
+		<br>
+		<br>
+
+
+	</div>
+	
+	
+	<div class="box">
+		<h3>2.String 객체</h3>
+		- replace(search , newvalue) : 문자열변경 <br> 
+		- search에 해당하는 문자를 newvalue에 해당하는 값으로 변경해라 <br>
+		- 변경한 문자열을 새로운 문자열로 리턴한다.<br><br>
+		- replace (정규식, 새로운문자열) : <br>
+		- 정규식 : 문자규칙   , /abc/gi : g전체영역(global) ,   i : 영문자의 대소문자 구분없다 <br>
+		- &lt;br&gt;태그를 \n 또는 \r\n으로 변경 한다.<br> 
+		- textarea에 출력한다 -value
+		
+		
+		<br> <br>
+		<button type="button" onclick="proc3()">문자열 변경</button>
+
+		<br> <br>
+		<div id="result3"></div>
+		<br>
+		<textarea id ="area" rows = "10" cols = "50"></textarea>
+		<br>
+		<br>
+
+
+	</div>
+	
+	<div class="box">
+		<h3>3.String 객체</h3>
+		- substring(from,to) : form에서 to 사이의 문자열 추출 <br>
+		- to는 포함되지 않는다. <br><br>
+		- substring(from) : from위치에서 끝까지 추출<br>
+		- substr(start , length) : start 에서부터 length길이 만큼 추출 <br>
+		<br>
+		- slice(start , to) : from ~ to 사이의 문자열 추출<br>
+		<br> <br>
+		<button type="button" onclick="proc4()">substring</button>
+		<button type="button" onclick="proc5()">substr</button>
+		<button type="button" onclick="proc6()">slice</button>
+
+		<br> <br>
+		<div id="result4"></div>
+		<div id="result5"></div>
+		<div id="result6"></div>
+		<br>
+	
+
+
+	</div>
+	
+	<div class="box">
+		<h3>4.String 객체</h3>
+		- split : 문자열 분리해서 배열을 생성 <br>
+		- split(separator, limit) :	<br>	
+		- separator : 구분자 
+		<br> <br>
+		<button type="button" onclick="proc7()">substring</button>
+		
+		<br> <br>
+		<div id="result7"></div>
+		
+		<br>
+	
+
+
+	</div>
+	
+	<div class="box">
+		<h3>4.String 객체</h3>
+		- 이미지의 이름을 추출해서 title을 생성한다.<br>
+		- 이미지 태그의 속성 src의 값을 가져온다.<br>
+		- src값에서 필요한 문자를 추출한다.<br>
+		- 이미지 태그의 title 속성으로 설정한다.<br>
+		- 속성값을 가져오거나 설정할 때 - getAttribute('src') <br>
+		- 속성값을 설정해라 -setAttribute('title' , 값)<br>
+		-
+		<br>
+		<ul>
+			<li><img  src = "../images/스마일.png"></li>
+			<li><img  src = "../images/배경3.png"></li>
+			<li><img  src = "../images/영화3.jpg"></li>
+			<li><img  src = "../images/카페라떼.jpg"></li>
+			<li><img  src = "../images/영화1.jpg"></li>
+		</ul>
+		
+		
+		
+		
+		<br> <br>
+		<button type="button" onclick="proc8()">title생성</button>
+		
+		<br> <br>
+		<div id ='result8'></div>		
+		<br>
+	
+	</div>
+
+</body>
+</html>
