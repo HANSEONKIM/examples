@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+
+function proc1(){
+	
+	ranNum = Math.floor(Math.random() * 10 +1); //랜덤수 발생;
+	
+	count = 0;//카운트변수 선언초기화
+	number = "";//누적변수 선언 초기화
+	
+	while(true){
+		
+		a = prompt ("1~10사이 숫자 입력");//입력
+		number += a + " ";
+		count++;//카운트 증가
+		
+		if(a == ranNum)
+		break;
+		
+		if(a > ranNum) //힌트를 부여
+		alert( " 더 작은 수를 입력해라");
+		else alert("더 큰수를 입력해")
+	}
+	
+	
+	//출력
+	
+	document.getElementById('result1').innerHTML = "발생한수 :" + ranNum + "<br> 내가입력한수 : "+number + "<br>시도횟수 ? : " + count + "번째에 맞췃습니다.";
+}
+
+
+
+
+</script>
+
+
+
+
+</head>
+<body>
+
+
+	<div class="box">
+		<h3>Random 객체</h3>
+		-1~10사이의랜덤수를 하나 발생한다. <br> -수를 입력해서 랜덤수를 비교한다 <br> - 비교시 더
+		작은수 입력, 더큰수로 입력 하라는 힌트를 준다 <br> - 입력시마다 반복 횟수를 지정한다.<br> -
+		입력한 값들을 누적시켜 출력한다.<br> <br> <br>
+		<button type="button" onclick="proc1()">랜덤수맞추기</button>
+
+		<br> <br>
+		<div id="result1"></div>
+
+		<br>
+
+
+
+	</div>
+
+
+
+
+
+
+</body>
+</html>
