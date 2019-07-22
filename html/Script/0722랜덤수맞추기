@@ -5,37 +5,94 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/mystyle.css">
 <script>
+	function proc1() {
 
-function proc1(){
-	
-	ranNum = Math.floor(Math.random() * 10 +1); //랜덤수 발생;
-	
-	count = 0;//카운트변수 선언초기화
-	number = "";//누적변수 선언 초기화
-	
-	while(true){
-		
-		a = prompt ("1~10사이 숫자 입력");//입력
-		number += a + " ";
-		count++;//카운트 증가
-		
-		if(a == ranNum)
-		break;
-		
-		if(a > ranNum) //힌트를 부여
-		alert( " 더 작은 수를 입력해라");
-		else alert("더 큰수를 입력해")
+		ranNum = Math.floor(Math.random() * 10 + 1); //랜덤수 발생;
+
+		count = 0;//카운트변수 선언초기화
+		number = "";//누적변수 선언 초기화
+
+		while (true) {
+
+			a = prompt("1~10사이 숫자 입력");//입력
+			number += a + " ";
+			count++;//카운트 증가
+
+			if (a == ranNum)
+				break;
+
+			if (a > ranNum) //힌트를 부여
+				alert(" 더 작은 수를 입력해라");
+			else
+				alert("더 큰수를 입력해")
+		}
+
+		//출력
+
+		document.getElementById('result1').innerHTML = "발생한수 :" + ranNum
+				+ "<br> 내가입력한수 : " + number + "<br>시도횟수 ? : " + count
+				+ "번째에 맞췃습니다.";
+	}
+
+	function proc2() {
+		res = "";
+		//컴퓨터의 배열
+		com = [ "가위", "바위", "보" ];
+
+		//랜덤발생 0~2까지
+		ran = Math.floor(Math.random() * 3);
+
+		computer = com[ran];
+
+		//사용자 입력
+		user = prompt("가위,바위,보");
+
+		res = "컴퓨터 : " + computer + "<br>";
+		res += "사용자 : " + user + "<br>";
+
+		//비교
+
+		if (computer == user)
+			res += "비겼다 <br>	";
+		else if (user == "가위" && computer == "바위" || user == "바위"
+				&& computer == "보" || user == "보" && computer == "가위")
+			res += "computer가 이겼다.";
+		else
+			res += "사용자가 이겼다";
+
+		document.getElementById('result2').innerHTML = res;
+
 	}
 	
 	
-	//출력
 	
-	document.getElementById('result1').innerHTML = "발생한수 :" + ranNum + "<br> 내가입력한수 : "+number + "<br>시도횟수 ? : " + count + "번째에 맞췃습니다.";
-}
-
-
-
-
+	function proc3(){
+		
+		
+	var str = new Array();
+		
+		i=0; res = "";
+		
+		
+		while(true){
+		
+				a = Math.floor(Math.random()*46+1);
+				
+				res += a + " ";
+				
+				if(str.indexOf(a) == -1){
+					str.push(a);
+					i++;
+				}
+				if(i>5)break;
+			}
+	
+		document.getElementById('result3').innerHTML = "랜덤으로 발생한 숫자 : " + res + "<br>";
+		document.getElementById('result3').innerHTML += "중복되지 않은 수 : "  + str;
+		
+		
+		
+	}
 </script>
 
 
@@ -60,6 +117,39 @@ function proc1(){
 
 
 	</div>
+
+
+	<div class="box">
+		<h3>Random객체</h3>
+		- 컴퓨터와 가위바위 보 게임<br> - 컴퓨터는 배열에 저장하고 랜덤수번째의 배열값을 선택 <br> -
+		사용자느 prompt를 이용하여 입력 <br> <br> <br>
+		<button type="button" onclick="proc2()">랜덤수맞추기</button>
+
+		<br> <br>
+		<div id="result2"></div>
+
+		<br>
+
+
+
+	</div>
+
+
+	<div class="box">
+		<h3>Random객체</h3>
+		- 1~45사이의 랜덤 수 발생 <br>
+		- 중복없이 배열에 저장 <br>
+		- 배열의 크기는 6개 <br>
+		  <br> <br>
+		<button type="button" onclick="proc3()">로또발생</button>
+
+		<br> <br>
+		<div id="result3"></div>
+
+		<br>
+
+	</div>
+
 
 
 
