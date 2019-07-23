@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+	function proc1() {
+		ult = document.getElementsByTagName('ul')[0];
+		lit = ult.getElementsByTagName('li');
+
+		res = "";
+		for (i = 0; i < lit.length; i++) {
+			res += lit[i].firstChild.data + "<br>";
+		}
+		document.getElementById('result1').innerHTML = res;
+	}
+
+	function proc2() {
+
+		ult = document.getElementsByTagName('ul')[1];
+		lit = document.getElementsByTagName('li');
+
+		for (i = 0; i < lit.length; i++) {
+			txt = lit[i].firstChild.data
+
+			//이미지 객체를 생성한다.
+			// <img src = "" width = "" height = "">
+			vimg = document.createElement('img');
+			// 			vimg.setAttribute('src','../images/'+txt+".jpg");
+			vimg.src = '../images/' + txt + ".jpg";
+			vimg.width = 100;
+			vimg.height = 100;
+
+			lit[i].appendChild(vimg);
+		}
+	}
+
+	function proc3(t) { //클릭한 li객체
+		txt = t.firstChild.data;
+		//img 태그 생성, 속성 지정
+		vimg = document.createElement('img');
+
+		//t에다가 추가 appendChild
+		vimg.src = '../images/' + txt + ".jpg";
+		vimg.width = 100;
+		vimg.height = 100;
+
+		t.appendChild(vimg);
+
+	}
+	function proc4() {
+
+		re4data = document.getElementById('re4').textContent;
+		resdiv = document.getElementById('result4');
+		resdiv.innerHTML = "<h1>" + re4data + "</h1>";
+		resdiv.style.color = 'red';
+
+	}
+	
+	
+	function proc5(){
+		
+		imgt = document.getElementById('onoff');
+		
+		
+		if(imgt.src.match("off")){
+			alert(imgt.src.match("off"));
+			imgt.src = '../images/sw_on.png'
+			
+		}else{
+			alert(imgt.src.match("off"));
+			imgt.src = '../images/sw_off.png'
+			
+		}
+// 		imgt.setAttribute('src', "../images/sw_on.png")
+		
+// 		alert(imgt.getAttribute('src'));
+		
+	}
+</script>
+
+</head>
+<body>
+
+
+	<div class="box">
+		<h3>Dom 객체</h3>
+		- ul태그로 접근<br> - ul의 li태그로 접근 <br> - li태그의 자식값을 가져온다 <br>
+		<br>
+		<ul>
+			<li>test1</li>
+			<li>test2</li>
+			<li>test3</li>
+			<li>test4</li>
+			<li>test4</li>
+		</ul>
+
+		<br> <br>
+
+		<button type="button" onclick="proc1()"></button>
+		<br>
+		<div id="result1"></div>
+	</div>
+
+
+	<div class="box">
+		<h3>Dom 객체</h3>
+		- ul태그로 접근<br> - ul의 li태그로 접근 <br> - li태그의 자식값을 가져온다 <br>
+		- 이미지 객체를 생성 - creatElement('img')<br> - 각 li list의 자식으로 추가한다. -
+		appendChild('img')<br> - <br>
+		<ul>
+			<li>영화1</li>
+			<li>영화2</li>
+			<li>영화3</li>
+			<li>영화4</li>
+			<li>스파게티</li>
+		</ul>
+		<br> <br>
+
+		<button type="button" onclick="proc2()">이미지추가하기</button>
+		<br>
+		<div id="result2"></div>
+	</div>
+
+
+	<div class="box">
+		<h3>Dom 객체</h3>
+		- ul태그로 접근<br> - ul의 li태그로 접근 <br> - li태그의 자식값을 가져온다 <br>
+		- 이미지 객체를 생성 - creatElement('img')<br> - 각 li list의 자식으로 추가한다. -
+		li.appendChild(img)<br> - li를 클릭하면 수행한다. <br>
+		<ul>
+			<li onclick="proc3(this)">영화1</li>
+			<li onclick="proc3(this)">영화2</li>
+			<li onclick="proc3(this)">영화3</li>
+			<li onclick="proc3(this)">영화4</li>
+			<li onclick="proc3(this)">스파게티</li>
+		</ul>
+		<br> <br> <br>
+
+	</div>
+
+
+	<div class="box">
+		<h3>Dom 객체</h3>
+		- id가 re4인 div의 내용을 가져와서 <br> - id가 result4인 div에 출력하시오 <br>
+		<br>
+
+
+
+		<div id="re4">무궁화 꽃이 피었습니다.</div>
+		<br>
+
+		<button type="button" onclick="proc4()">내용변경하기</button>
+		<br>
+		<div id="result4"></div>
+	</div>
+
+
+	<div class="box">
+		<h3>Dom 객체</h3>
+		- on스위치를 누르면 off 가 되고 <br> - off 스위치를 누르면 on 이 됨<br> - 이미지를
+		직접 바꾸지 않고 match()함수를 이용하여 바꾼다.<br> - match()함수는 검색문자가 포함되어 있으면
+		해당문자를 리턴하고<br> - 검색문자가 포함되어 있지 않으면 null을 리턴한다.<br>
+		-match() 는 일부분의 문자가 포함되어 있는지를 비교한다.<br>
+		<br> <br>
+		<button type="button" onclick="proc5()">이미지변경</button>
+		<br>
+		<div id="result5">
+			<img id = "onoff" src="../images/sw_off.png">
+		</div>
+	</div>
+
+
+
+</body>
+</html>
