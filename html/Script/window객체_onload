@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+
+<script>
+// 	window.onload = function() {
+
+// 		a = setInterval(function() {
+			
+// 			r = Math.floor(Math.random()*256);
+// 			g = Math.floor(Math.random()*256);
+// 			b = Math.floor(Math.random()*256);
+// 			document.getElementById('target').style.backgroundColor = 'rgb('+r+','+g+','+b+')';
+
+// 		}, 500);
+
+// 	}
+	
+	
+	
+	
+	function changeColor(){
+		
+		a = setInterval(function(){
+		
+			r = Math.floor(Math.random()*256);
+			g = Math.floor(Math.random()*256);
+			b = Math.floor(Math.random()*256);
+			
+// 			document.getElementById('target').style.backgroundColor = 'rgb('+r+','+g+','+b+')';
+		
+		document.getElementsByTagName('body')[0].style.backgroundColor = '#'+r.toString(16)+g.toString(16)+b.toString(16);
+
+
+		}, 500);
+
+		
+	}
+	
+	function stopTextColor(){
+		clearInterval(a);
+	}
+	
+</script>
+<body onload = "changeColor()">
+
+
+	<div id="target">
+		<p>This is a Text.</p>
+	</div>
+	<button onclick="stopTextColor()">중지</button>
+	<br>
+
+
+
+
+
+</body>
+</html>
