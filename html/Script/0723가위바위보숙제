@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div.button {
+	margin: auto;
+	width: 50%;
+}
+
+div.button input {
+	padding: 5px;
+	width: 100%;
+	font-size: 18px;
+}
+
+div {
+	width: calc(50% - 1px);
+	text-align: center;
+	text-size: 1.5em;
+}
+
+div#user {
+	background: pink;
+	float: left;
+	height: 30px;
+}
+
+div#com {
+	background: yellow;
+	float: right;
+	height: 30px;
+}
+
+div#user1 {
+	float: left;
+}
+
+div#com1 {
+	float: right;
+}
+
+div#result {
+	clear: both;
+	background: #ECF6CE;
+	width: 100%;
+	height: 50px;
+}
+</style>
+
+<script>
+	function proc1() {
+
+		res = "";
+		com = ["../images/가위_우.png", "../images/바위_우.png", "../images/보_우.png"];
+
+		ran = Math.floor(Math.random() * com.length);
+
+		computer = com[ran];
+
+		user = prompt("가위,바위,보를 입력하세요");
+
+		imgt = document.getElementById('userimg');
+	
+		if (user == "가위")
+			imgt.src = '../images/가위_좌.png';
+		else if (user == "바위")
+			imgt.src = '../images/바위_좌.png';
+		else if (user == "보")
+			imgt.src = '../images/보_좌.png';
+
+		document.getElementById('comimg').src = computer;
+
+		if (user == "가위" && computer ==com[0] || user == "바위" && computer ==com[1] || user == "보"
+				&& computer ==com[2])
+			res = "비겼습니다.";
+		else if (user == "가위" && computer ==com[2] || user == "바위" && computer ==com[0]
+				|| user == "보" && computer ==com[1])
+			res = "당신이 이겼습니다";
+
+		else if (user == "가위" && computer ==com[1] || user == "바위" && computer ==com[2]
+				|| user == "보" && computer ==com[0])
+			res = "컴퓨터가 이겼습니다";
+
+		document.getElementById('result').innerHTML = "결과 : " + res;
+	}
+</script>
+</head>
+<body>
+
+	<div class="button">
+		<input type="button" onclick="proc1()" value="게임시작">
+	</div>
+	<br>
+	<br>
+	<div id="user">사람</div>
+	<div id="com">컴퓨터</div>
+	<div id="user1">
+		<img id="userimg" src="../images/가위_좌.png">
+	</div>
+	<div id="com1">
+		<img id="comimg" src="../images/바위_우.png">
+	</div>
+
+	<div id="result"></div>
+
+</body>
+</html>
