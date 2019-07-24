@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+
+<script>
+	function proc1(t) {
+		//t는 호출시 hello라는 글자 
+
+		//textNode를 생성
+		tnode = document.createTextNode(t);
+
+		document.getElementById('result1').appendChild(tnode);
+		document.getElementById('result1').style.fontSize = "1.5em";
+		document.getElementById('result1').style.color = 'red';
+		// 		document.getElementById('result1').textContent = "hello";
+		// 		document.getElementById('result1').innerHTML = "<h1>hello</h1>";
+
+	}
+
+	str = [ "hello", "java", "html", "css", "javascript", "naver.com", "haapy" ];
+	function proc2(p) {
+
+		//랜덤발생
+		rand = Math.floor(Math.random() * str.length);
+
+		//p태그생성
+		ptag = document.createElement("p");
+
+		//textNode생성
+
+		tnode = document.createTextNode(str[rand]);
+
+		//p태그에 textNode추가
+
+		ptag.appendChild(tnode);
+
+		//result2에 p태그 추가
+
+		document.getElementById('result2').appendChild(ptag);
+
+	}
+
+	function proc3() {
+
+		//div result2 으로 접근
+		divtag = document.getElementById('result2');
+
+		ptag = divtag.lastChild
+
+		divtag.removeChild(ptag);
+
+	}
+
+	function proc4() {
+
+		//랜덤발생
+		rand = Math.floor(Math.random() * str.length);
+
+		//p태그생성
+		ptag = document.createElement("p");
+
+		//textNode생성
+
+		tnode = document.createTextNode(str[rand]);
+
+		//p태그에 textNode추가
+
+		ptag.appendChild(tnode);
+
+		//button태그 생성
+		but = document.createElement('button');
+		but.onclick = function(){
+			this.parentNode.remove();
+			
+		};
+		but.innerHTML = "삭제";
+		//onclick과 삭제글자를 설정
+
+		ptag.appendChild(but);
+
+		//result2에 p태그 추가
+
+		document.getElementById('result4').appendChild(ptag);
+
+	}
+
+	
+</script>
+</head>
+<body>
+
+
+
+	<div class="box">
+		<h3>Dom 객체</h3>
+		<h4>
+			클릭하세요<br> div result 안에 Hello를 출력합니다.
+		</h4>
+		- 함수호출시 매개변수로 Hello문자를 넘겨준다<br> - 함수에서 createTextNode()로 문자개체를 생성<br>
+		- div result 안에 생성되s textNode를 추가한다.<br> <br> <br>
+
+		<button type="button" onclick="proc1('Hello')">text생성하기</button>
+		<br>
+		<div id="result1"></div>
+	</div>
+
+	<div class="box">
+		<h3>Dom 객체</h3>
+		<h4>
+			클릭하세요<br> div result 안에 랜덤으로 발생하는 문자를 출력합니다.
+		</h4>
+		- creatElement() p태그를 생성시킨다.<br> - creatTextNode() 문자개체를 생성<br>
+		- p태그안에 textNode를 추가한다.p.appendChild<br> - div result안에 p태그를
+		추가한다.<br>
+		<br> - 삭제 버튼을 클릭하면 textnode를 삭제한다. - removeChild() <br> <br>
+
+		<button type="button" onclick="proc2()">text생성하기</button>
+		<button type="button" onclick="proc3()">삭제</button>
+
+		<br>
+		<div id="result2"></div>
+	</div>
+
+	<div class="box">
+		<h3>Dom 객체</h3>
+		<h4>
+			클릭하세요<br> div result 안에 랜덤으로 발생하는 문자를 출력합니다.
+		</h4>
+		- creatElement() p태그를 생성시킨다.<br> - creatTextNode() 문자개체를 생성<br>
+		- p태그안에 textNode를 추가한다.p.appendChild<br> - div result안에 p태그를
+		추가한다.<br>
+		<br> - 삭제 버튼을 클릭하면 textNode를 삭제한다.<br> -creatElement( ):
+		button태그를 생성한다.<br> - 새롭게 생ㅅ엉된 버튼에 onclick과 삭제라는 글자를 설정한다.<br>
+		- p태그 안에 button을 추가한다. - - 삭제버튼을 클릭하면 클릭한 p태그를 삭제한다.<br>
+		-removeChild() <br> <br>
+
+		<button type="button" onclick="proc4()">text생성하기</button>
+
+
+		<br>
+		<div id="result4"></div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
