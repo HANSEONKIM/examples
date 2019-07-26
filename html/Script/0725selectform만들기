@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+
+form{
+text-align : center;
+}
+.button {
+	color: white;
+	font-weight: bold;
+	background: #F6CEF5;
+	padding: 10px 30px;
+	border-radius: 50px;
+	text-align : center;
+}
+input[type=text]{
+height : 30px;
+}
+
+
+.box table{
+margin : 0 auto;
+border-spacing : 10px;
+border : none;
+bpx-sizing : boder-box;
+
+}
+select{
+width : 500px;
+height : 500px;
+}
+
+</style>
+
+<script>
+	window.onload = function(){
+		f = document.ff
+		f.txt.focus();
+	}
+	
+function addproc(){
+	
+	//엔터키값 비교
+// 	if(window.event.keyCode == "13" || window.event.target.tagName =="BUTTON" ){
+	
+	//입력한 값을 가져온다.
+	vtxt = f.txt.value;
+	
+	if(vtxt.trim().length == 0) {
+		alert("입력하세요");
+		return;
+	}
+	
+	//option태그 생성
+	opt = document.createElement('option');
+	opt.text = vtxt;
+	opt.value = vtxt;
+	
+	f.left.appendChild(opt);
+	//입력 지우기
+	f.txt.value = "";
+	f.txt.focus();
+	
+	
+}
+
+function toRight(){
+	//왼쪽에서 선택 - 몇번째 선택?
+	idx= f.left.selectedIndex;
+
+	if(idx == -1){
+		alert("선택하세요");
+		return;
+	}
+	//왼쪽에서 선택한 번째의 option의 값을 가져온다.
+	lvalue = f.left.options[idx].value;
+	
+	//lvalue를 오른쪽으로 이동 -오른쪽에 option태그를 만들고 오른쪽에 추가한다.
+	opt = document.createElement('option');
+	opt.value = lvalue;
+	opt.text=lvalue;
+	f.right.appendChild(opt);
+	
+	//왼쪽에서 선택한 객체를 삭제한다
+	f.left.removeChild(f.left.options[idx]);
+	
+	
+}
+
+function toLeft(){
+	
+	//오른쪽에서 선택 - 몇번째 선택?
+	idx= f.right.selectedIndex;
+
+	if(idx == -1){
+		alert("선택하세요");
+		return;
+	}
+	//오른쪽에서 선택한 번째의 option의 값을 가져온다.
+	rvalue = f.right.options[idx].value;
+	
+	//rvalue를 왼쪽으로 이동 -왼쪽 option태그를 만들고 오른쪽에 추가한다.
+	opt = document.createElement('option');
+	opt.value = rvalue;
+	opt.text=rvalue;
+	f.left.appendChild(opt);
+	
+	//오른쪽에서 선택한 객체를 삭제한다
+	f.right.removeChild(f.right.options[idx]);
+	
+	
+	
+}
+
+function rightAll(){
+	//왼쪽에서 오른쪽으로 이동
+	
+	len = f.left.length;
+	for(i=0; i<len;i++){
+		lvalue = f.left.options[0].value;
+		
+		//option 생성, 오른쪽으로 추가
+		opt = document.createElement('option');
+		opt.text = lvalue;
+		opt.value = lvalue;
+		f.right.appendChild(opt);
+		
+		//왼쪽에서 삭제
+		f.left.removeChild(f.left.options[0]);
+		
+	}
+	
+}
+
+function leftAll(){
+	//왼쪽에서 오른쪽으로 이동
+	
+	len = f.right.length;
+	
+	for(i=0; i<len;i++){
+		rvalue = f.right.options[0].value;
+		
+		//option 생성, 오른쪽으로 추가
+		opt = document.createElement('option');
+		opt.text = rvalue;
+		opt.value = rvalue;
+		f.left.appendChild(opt);
+		
+		//왼쪽에서 삭제
+		f.right.removeChild(f.right.options[0]);
+		
+	}
+	
+}
+
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h3>form 문제 4</h3>
+		- select/option<br> - select multiple 속성과 size 속성<br> <br>
+		<br>
+		<form name="ff">
+			<table>
+
+				<tr>
+					<td colspan="3">
+					<h1>select예제</h1>
+					<h2>데이터를 교환하는 프로그램</h2>
+					</td>
+				</tr>
+
+				<tr >
+					<td ><select name = "left" size="15" multiple>
+					<option ></option>
+					</select></td>
+					<td>
+						<input class="button" type="button" id="bu1" value=">"onclick="toRight()"><br><br> 
+						<input	class="button" type="button" id="bu2" value=">>"onclick="rightAll()"><br><br> 
+						<input	class="button" type="button" id="bu3" value="<" onclick="toLeft()"><br><br>
+						<input class="button" type="button" id="bu4" value="<<"onclick="leftAll()"><br><br>
+					
+					</td>
+					<td ><select name = "right"size="15" multiple>
+						<option ></option>
+						</select></td>
+				</tr>
+
+
+				<tr >
+					<td colspan="3">
+						<input type="text" id = "txt" name="txt" size="50" >
+						<button type="button" class="button" id="print" onclick="addproc()">추가하기</button>
+					</td>
+				</tr>
+
+
+
+
+			</table>
+		
+		</form>
+	</div>
+</body>
+</html>
