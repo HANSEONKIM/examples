@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+
+#print{
+	color: white;
+	font-weight: bold;
+	background: #FA5858;
+	padding: 10px 30px;
+	border-radius : 50px;
+}
+</style>
+
+<script>
+function proc1(){
+	
+	a = document.getElementById('dan').value;
+	
+	res = "";
+	for (i = 1; i < 10; i++) {
+
+		res += a + "*" + i + "=" + a * i + "\n";
+
+	}
+
+	document.getElementById('area').innerHTML = res;
+
+
+}
+function proc2(){
+	
+	
+	 var a = document.getElementById("dan2").value;
+	 	
+	res = "";
+	for (i = 1; i < 10; i++) {
+
+		res += a + "*" + i + "=" + a * i + "<br>";
+
+	}
+
+	document.getElementById('result1').innerHTML = res;
+	
+	
+}
+
+
+
+
+
+
+</script>
+</head>
+<body>
+<form>
+
+<div class = "box">
+<h1>구구단 출력하기</h1>
+textarea 에 출력하기<br>
+<input type = "text" id="dan">단<input type="button" id ="print" value = "출력" onclick = "proc1()"><br><br>
+<textarea id = "area" rows = "10" cols="20"></textarea>
+<br>
+<br>
+</div>
+</form>
+<div class = "box">
+<form>
+<h1>구구단출력하기</h1>
+div 에 출력하기<br>
+<select id ="dan2" onchange ="proc2()">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+</select>
+
+
+<div id = "result1"></div>
+</form>
+</div>
+
+
+</body>
+</html>
