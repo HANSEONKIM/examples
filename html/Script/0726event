@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<style>
+	img{
+		width : 100px;
+		height : 100px;
+	}
+</style>
+<script>
+	// 	window.onload = function (){
+
+	// 		document.body.style.backgroundColor = "yellow";
+	// 	}
+
+	function changeColor(col) {
+
+		document.body.style.backgroundColor = col;
+
+	}
+
+	function loadProc(col) {
+
+		document.body.style.backgroundColor = "red";
+
+	}
+
+	function sub() {
+
+		var x = document.getElementsByName("name")[0];
+		x.value = x.value.toLowerCase();
+
+	}
+
+	function downProc() {
+		res1 = document.getElementById('result1');
+		res1.style.fontSize = '1.5em';
+
+	}
+	function upProc() {
+
+		res2 = document.getElementById('result2');
+		res2.style.color = 'red';
+	}
+	function clickProc() {
+		res3 = document.getElementById('result4');
+		res3.style.backgroundColor = 'cyan';
+	}
+
+	function downProc3() {
+		res3 = document.getElementById('result3');
+		res3.style.color = 'blue';
+	}
+
+	function upProc3() {
+		res3 = document.getElementById('result3');
+		res3.style.color = 'red';
+	}
+
+	function overProc() {
+
+		res5 = document.getElementById('result5');
+		res5.style.color = 'pink';
+		res5.style.backgroundColor = '#1B0A2A';
+
+	}
+
+	function outProc() {
+		res6 = document.getElementById('result6');
+		res6.style.fontSize = '5em';
+		res6.style.color = 'white';
+		res6.style.backgroundColor = 'black';
+
+	}
+
+	function outProc1() {
+		res5 = document.getElementById('result5');
+		res5.style.color = '#1B0A2A';
+		res5.style.backgroundColor = 'pink';
+
+	}
+	
+	function imgover(t){
+		 
+		t.style.border = '10px solid black';
+		
+	}
+	
+	function imgout(t){
+		
+		t.style.border = 'none';
+		
+	}
+</script>
+
+</head>
+<body onload="loadProc()">
+
+	<form method="POST">
+		<input type="radio" name="C1" value="v1"
+			onclick="changeColor('lightblue')">파랑색 <input type="radio"
+			name="C1" value="v2" onclick="changeColor('lightgreen')">녹색
+	</form>
+
+
+	<div class="box">
+		<h3>이벤트</h3>
+		input type= text에 입력하고 벗어나면 onchange이벤트<br> 소분자로 변경<br> <br>
+		<br> 단어입력 : <input type="text" name="name" onchange="sub()">
+		<br>
+		<p>입력필드를 벗어나면 소문자로 변경됩니다.</p>
+
+
+	</div>
+
+	<div class="box">
+		<h3>이벤트 mousedown/mouseup</h3>
+		onmousedown : 마우스를 누를때 <br> onmouseup : 마우스를 눌렀다 놓을때<br>
+		onclick : 마우스를 눌렀다 놓을때 <br>
+		<div id="result1" onmousedown="downProc()">Hello</div>
+		<div id="result2" onmouseup="upProc()">Good Morning</div>
+		<div id="result3" onmouseup="upProc3()" onmousedown="downProc3()">down
+			비온다.up</div>
+		<div id="result4" onclick="clickProc()">Happy New Year</div>
+
+
+	</div>
+
+	<div class="box">
+		<h3>이벤트 mouseover/mouseout</h3>
+		onmouseover: 마우스를 올려놓을때 <br> onmouseout : 마우스를 내려놓을때<br> <br>
+		<div id="result5" onmouseover="overProc()" onmouseout="outProc1()">오늘은
+			금요일</div>
+		<div id="result6" onmouseout="outProc()">불같이 공부하는 불금..</div>
+
+
+	</div>
+
+	<div class="box">
+		<h3>이벤트 mouseover/mouseout</h3>
+		onmouseover:over되는 이미지의 테두리를 설정한다.border로 설정하면 됨 <br> 
+		onmouseout : 테두리를 헤제한다. border : none<br> <br>
+		<div id="result7" >
+		<img src = "../images/영화1.jpg" onmouseover = "imgover(this)" onmouseout = "imgout(this)">
+		<img src = "../images/영화2.jpg" onmouseover = "imgover(this)" onmouseout = "imgout(this)">
+		<img src = "../images/영화3.jpg" onmouseover = "imgover(this)" onmouseout = "imgout(this)">
+		<img src = "../images/비엔나커피.jpg" onmouseover = "imgover(this)" onmouseout = "imgout(this)">
+		<img src = "../images/음식3.png" onmouseover = "imgover(this)" onmouseout = "imgout(this)">
+		</div>
+		
+
+
+	</div>
+
+
+
+</body>
+</html>
