@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/formregcheck.js"></script>
+<style>
+label {
+	display: inline-block;
+	width: 150px;
+	height: 30px;
+}
+</style>
+<script>
+	window.onload = function() {
+		f = document.ff;
+		f.name.focus();
+
+	}
+	function proc1() {
+		if (regCheck()) {
+			alert("입력완료");
+		}
+
+	}
+</script>
+</head>
+
+<body>
+<pre>
+	정규칙 체크
+	입력문자열.match(정규식) : 입력 문자열이 맞는 일부분의 문자열이 있으면 문자를 return하고 없으면 null을 리턴함.
+	
+	정규식.test(입력문자열)	:	입력문자열이 정규식에 맞으면 true 맞지 않으면 false 리턴.
+	
+	정규식 exec(입력문자열)	:	입력문자열에서 정규식에 맞는 일부분의 문자가 있느냐? 있으면 문자열을 리턴 없으면 null	
+	</pre>
+
+	<form name="ff">
+		<label>이름(2~5) </label> <input type='text' name='name'><br>
+		<label>아이디(8~12) </label> <input type="text" name="id"><br>
+		<label>비밀번호(8~12) </label> <input type="password" name="pass"><br>
+		<label>이메일 </label> <input type="text" name="email"><br>
+		<label>휴대폰 </label><input type="text" name="tel"><br> <br>
+		<input type="button" onclick="proc1()" value="전송"> <input
+			type="reset" value="취소">
+	</form>
+</body>
+</html>
