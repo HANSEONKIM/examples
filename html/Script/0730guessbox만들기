@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<style>
+.box {
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+	word-break;
+	break-all;
+}
+
+#header {
+	border: none;
+}
+
+#main {
+	height: 500px;
+	background: #819FF7;
+	border: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.guessbox {
+	display: inline-block;
+	border: none;
+}
+
+img {
+	width: 300px;
+	height: 300px;
+}
+</style>
+<script>
+	function imgover(t) {
+
+		t.style.border = '5px solid black';
+
+	}
+
+	function imgout(t) {
+
+		t.style.border = 'none';
+
+	}
+
+	function clickProc(a) {
+
+		for (i = 0; i < document.getElementsByTagName("p").length; i++) {
+			document.getElementsByTagName("p")[i].innerHTML = "";
+
+		}
+
+		rand = Math.floor((Math.random()*6)+9);
+		ptag = document.createElement("p");
+		ptag.innerHTML = "할인율" + rand + "%";
+		a.appendChild(ptag);
+	}
+
+	// 	function clickProc2(){
+
+	// 	divtag = document.getElementById('main');
+
+	// 		ptag = divtag.lastChild
+
+	// 		divtag.removeChild(ptag);
+	// 	}
+
+	// 	function proc1(a){
+
+	// 	for(i=0;i<	document.getElementByTagName("p").length;i++){
+	// 		document.getElementsByTagName("p")[i].innerHTML="";
+
+	// 	}
+	// 	rand = Math.floor(Math.random()*5+1);
+	// 	ptag = document.createElement("p");
+	// 	ptag.innerHTML = "할인율" + rand + "%";
+	// 	a.apendChild(ptag)
+	// 	}
+</script>
+
+</head>
+<body>
+	<div class="box">
+		<h2>할인율</h2>
+		<div id="header">
+			<h3>선택하면 즐거운 일이 ...</h3>
+		</div>
+		<div id="main">
+			<div class="guessbox" onclick="clickProc(this)">
+				<img src="../images/Desert.jpg" onmouseover="imgover(this)"
+					onmouseout="imgout(this)" >
+			</div>
+
+			<div class="guessbox" onclick="clickProc(this)">
+				<img src="../images/Hydrangeas.jpg" onmouseover="imgover(this)"
+					onmouseout="imgout(this)" >
+			</div>
+
+			<div class="guessbox" onclick="clickProc(this)">
+				<img src="../images/Chrysanthemum.jpg" onmouseover="imgover(this)"
+					onmouseout="imgout(this)" >
+			</div>
+
+			<div class="guessbox" onclick="clickProc(this)">
+				<img src="../images/Lighthouse.jpg" onmouseover="imgover(this)"
+					onmouseout="imgout(this)" >
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
