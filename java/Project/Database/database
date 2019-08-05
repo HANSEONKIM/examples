@@ -1,0 +1,36 @@
+package data;
+
+import java.util.ArrayList;
+
+import vo.*;
+
+public class Database {
+
+	private static Database instance;
+
+	private Database() {}
+
+	public static Database getInstance() {
+		if (instance == null) {
+			instance = new Database();
+		}
+		return instance;
+	}
+
+	public static  ArrayList<UserVo> tb_user = new ArrayList<UserVo>(); // 회원
+
+	public static ArrayList<BusVo> tb_bus = new ArrayList<BusVo>(); // 버스
+
+	public static  ArrayList<NoticeVo> tb_notice = new ArrayList<NoticeVo>(); // 공지사항
+
+	public ArrayList<ReserveVo> tb_reserve = new ArrayList<ReserveVo>(); // 예매
+
+	public ArrayList<SeatReserVo> tb_seatreser = new ArrayList<SeatReserVo>(); // 예매좌석
+
+	public ArrayList<SeatVo> tb_seat = new ArrayList<SeatVo>(); // 좌석
+
+	public ArrayList<TerminalVo> tb_terminal = new ArrayList<TerminalVo>(); // 터미널
+
+	public ArrayList<TimetableVo> tb_timetable = new ArrayList<TimetableVo>(); // 시간표
+
+}
