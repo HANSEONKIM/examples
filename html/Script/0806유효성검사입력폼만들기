@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+label {
+	display: inline-block;
+	width: 150px;
+	height: 30px;
+}
+
+fieldset {
+	width: 35%;
+	height: auto;
+}
+
+#to {
+	width: 150px;
+}
+
+#cc {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+#kk {
+	background-color: #008CBA;
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+#ii {
+	background-color: #555555;
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+#bb {
+	text-align: justify;
+}
+
+legend{
+background : #2ECCFA;
+padding : 10px 20px;
+width : 100px;
+height : 25px;
+font-size : 15px;
+
+border-radius: 25px;
+}
+
+fieldset{
+
+	border : 10px solid #E6E6E6;
+}
+
+#name{
+	margin-right : 50px;
+}
+
+input{
+
+border-radius: 5px;
+
+}
+
+</style>
+<script>
+	window.onload = function() {
+		f = document.ff;
+		f.id.focus();
+
+	}
+
+	function clickProc() {
+
+		idvalue = f.id.value;
+
+		if (idvalue.trim().length == 0) {
+			alert("아이디를 입력하세요");
+			f.id.value = "";
+			f.id.focus();
+			return false;
+		}
+		
+		idreg = /^[a-z][a-zA-Z0-9]{8,10}$/;
+		if (!(idreg.test(idvalue))) {
+			alert("아이디형식 오류입니다.");
+			
+		}
+		
+		if (idvalue.trim().length < 8 || idvalue.trim().length > 12) {
+			alert("아이디는 8~12글자입니다.");
+			f.id.focus();
+			return false;
+
+		}
+
+
+		pasvalue = f.pass.value;
+		pasvalue2 = f.pass1.value;
+
+		if (pasvalue.trim().length == 0) {
+			alert("비밀번호를 입력하세요");
+			f.pass.value = "";
+			f.pass.focus();
+			return false;
+		}
+		if (pasvalue.trim().length > 15 && pasvalue.trim().length < 8) {
+			alert("비밀번호는 8~15글자입니다.");
+			f.pass.focus();
+			return false;
+		}
+
+		pasreg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}$/;
+
+		
+		if (!(pasreg.test(pasvalue))) {
+			alert("비밀번호 형식 오류입니다.");
+			return false;
+		}
+
+		if (pasvalue != pasvalue2) {
+			alert("비밀번호가 일치하지 않습니다");
+			return false;
+		}
+
+		
+		namevalue = f.name.value;
+	
+		
+
+				
+		if (namevalue.trim().length == 0) {
+			alert("이름을 입력하세요");
+			f.name.value = "";
+			f.name.focus();
+			return false;
+		}
+		
+		namereg = /^[가-힣]{2,5}$/;
+		if (!(namereg.test(namevalue))) {
+			alert("이름형식오류입니다.");
+			return false;
+		}
+			
+		if (namevalue.trim().length < 2 || namevalue.trim().length > 5) {
+				alert("이름은 한글 2~5자리입닌다.");
+			return false;
+
+			}
+				
+	
+
+			telvalue = f.tel.value;
+			if (telvalue.trim().length == 0) {
+				alert("전화번호입력해");
+				f.tel.value = "";
+				f.tel.focus();
+				return false;
+			}
+
+			telreg = /^\d{3}-\d{3,4}-\d{4}$/;
+			if (!(telreg.test(telvalue))) {
+				alert("전화번호 형식 오류입니다.");
+				return false;
+			}
+
+			
+			emailvalue = f.email.value;
+
+			if (emailvalue.trim().length == 0) {
+				alert("이메일을 입력해");
+				f.email.value = "";
+				f.email.focus();
+				return false;
+			}
+
+			emailreg = /^[0-9a-zA-Z]+@[0-9A-Za-z]+(\.[0-9A-Za-z]+){1,2}$/;
+			if (!(emailreg.test(emailvalue))) {
+				alert("이메일 형식 오류 입니다");
+				return false;
+			}
+			alert("입력완료")
+			return true;
+		}
+		
+	
+</script>
+
+</head>
+<body>
+	<div>
+		<h1>입력폼유효성검사</h1>
+
+		<form name="ff">
+			<fieldset>
+
+				<legend>
+					<strong>회원정보입력</strong>
+				</legend>
+
+				<label>아이디</label> <input type="text" name="id" id= "name"> <input
+					type="button" value="중복검사" name="cc" id="cc"> <br> <label>비밀번호</label>
+				<input type="password" name="pass"><br> <label>비밀번호확인</label>
+				<input type="password" name="pass1"><br> <label>이름</label>
+				<input type="text" name="name"><br> <label>성별</label> <input
+					type="radio" name="gender" value="여자" checked>여자 <input
+					type="radio" name="gender" value="남자">남자<br> <label>휴대폰
+					번호</label> <input type="text" placeholder="010-1234-5678" name="tel"
+					id="tel"><br> <label>이메일</label> <input type="text"
+					name="email"><br> <br> <br>
+			</fieldset>
+	</div>
+	<br>
+	<br>
+	<div id="bb">
+		<input type="button" value="제출" name="kk" id="kk"
+			onclick="clickProc()"> <input type="reset" value="취소"
+			name="ii" id="ii">
+
+	</div>
+	</form>
+
+</body>
+</html>
