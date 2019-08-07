@@ -1,0 +1,100 @@
+package homework_01;
+
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.ListIterator;
+
+public class Homework_01_0807 {
+
+	public static void main(String[] args) {
+
+		// List(인터페이스)가 제공하는 모든 메서드를 사용하는 예제를 만들어 제출하기
+
+		
+		
+		
+		ArrayList<String> hi = new ArrayList<>();
+
+		hi.add(0, "555");
+		hi.add(1, "안녕");
+		hi.add(2, "hi");
+		hi.add(3, "잘가");
+		hi.add(4, "bye");
+		hi.add(5, "내일봐");
+		hi.add(6, "안~녕");
+		hi.add(7, "1111");
+//-------------------------------------------------------------------------		
+		ArrayList<String> hi2 = new ArrayList<>();
+		
+		hi2.add(0,"123123");
+		hi2.add(1,"dfdf");
+				
+		hi.addAll(0,hi2);
+		
+		System.out.println(hi2);
+//-----------------------------------------------------------------------------		
+
+		System.out.println("--------1.void add(int index ,object element)사용 --------");
+
+		System.out.println(hi);
+		System.out.println();
+
+		System.out.println("--------2.Object get(int index) 사용 --------");
+		System.out.println();
+		for (int i = 0; i < hi.size(); i++) {
+			String get = hi.get(i);
+			System.out.println(get);
+		}
+
+		System.out.println("--------3.int indexOf(Object o) 사용 --------");
+		System.out.println();
+
+		System.out.println(hi.indexOf("123"));
+		System.out.println(hi.indexOf("1111"));
+		System.out.println(hi.indexOf("잘가"));
+		System.out.println(hi.indexOf("안~녕"));
+
+		System.out.println("--------4.int lastindexOf(Object o) 사용 --------");
+		System.out.println();
+
+		System.out.println(hi.lastIndexOf("내일봐"));
+		System.out.println(hi.lastIndexOf("bye"));
+
+		System.out.println("--------5.ListIterator lstIterator() 사용 --------");
+		System.out.println();
+
+		ListIterator list = hi.listIterator(8);
+		
+		System.out.println(list.hasNext()); //hasNext 인덱스주면 다음인덱스가 있으면 true 반환
+		System.out.println(list.nextIndex());
+		System.out.println(list.hashCode());
+		
+		System.out.println("--------6.remove() 사용 --------");
+		System.out.println();
+		
+		hi.remove(0);
+		System.out.println(hi);
+		
+		System.out.println("--------7.set(index,hi) 사용 --------");
+		System.out.println();
+		
+		
+		hi.set(5, "★★★★★★★");
+		System.out.println(hi);
+		
+		System.out.println("--------8.void sort(Comparator c) 사용 --------");
+		System.out.println();
+		
+		hi.sort(null);
+		System.out.println(hi);
+		hi.sort(Comparator.reverseOrder());
+		
+		System.out.println("--------9.List subList(index,index) 사용 --------");
+		System.out.println();
+		
+		hi.subList(1, 6);
+		System.out.println(hi.subList(1, 2));
+	}
+
+}
