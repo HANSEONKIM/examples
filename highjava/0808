@@ -1,0 +1,150 @@
+package kr.or.ddit.basic;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/*
+ * 문제) 학번, 이름, 국어점수, 영어점수, 수학점수, 총점, 등수를 멤버로 갖는 Student클래스를 만든다.
+ * 		생성자는 학번, 이름 , 국어, 영어, 수학 점수만 매개변수로 받아서 처리 한다.
+ * 
+ * 		이 Student객체들은 List에저장하여 관리한다.
+ * 		List에 저장된 데이터들을 학번의 오름차순으로 정렬하여 출력하는 부분과 총점의 역순으로 정렬하는 부분을 프로그램하시오.
+ * 		(총점이 같으면 학번의 내림차순으로 정렬되도록 한다.)
+ * 		(학번의 정렬기준은 Student클래스 자체에서 제공하도록 하고, 총점 정렬기준은 외부 클래스에서 제공하도록 한다.)-->comparator
+ * */
+public class T08_StudentTest {
+
+	public static void main(String[] args) {
+
+		List<Student> sList = new ArrayList<Student>();
+		sList.add(new Student("20120981", "김한선1", 50, 80, 70));
+		sList.add(new Student("20180808", "김한선2", 70, 80, 90));
+		sList.add(new Student("20170546", "김한선3", 50, 100, 90));
+		sList.add(new Student("20154659", "김한선4", 60, 60, 60));
+		sList.add(new Student("20215487", "김한선5", 75, 80, 15));
+		sList.add(new Student("20302154", "김한선6", 90, 80, 45));
+
+		System.out.println("============================================================");
+		System.out.println("정렬 전");
+		System.out.println();
+		for (Student stu : sList) {
+			System.out.println(stu);
+		}
+
+		System.out.println("============================================================");
+		System.out.println("등급으로 정렬");
+		System.out.println();
+
+	
+			for (int i = 0; i < sList.size(); i++) {
+				if (sList.get(i).getSum() > sList.get(i + 1).getSum()) {
+					sList.get(i).setRank(i)++;
+				}
+			}
+
+			
+		
+
+		System.out.println("============================================================");
+		System.out.println("학번 오름차순 정렬 ");
+		System.out.println();
+		Collections.sort(sList);// 정렬하기
+		for (Student stu : sList) {
+			System.out.println(stu);
+		}
+
+	}
+
+}
+
+class Student implements Comparable<Student> {
+
+	private String num; // 학번
+	private String name; // 이름
+	private int korScore;// 국어점수
+	private int engScore; // 영어점수
+	private int mathScore; // 수학점수
+	private int sum; // 총점
+	private int rank = 1; // 등급
+
+	public Student(String num, String name, int korScore, int engScore, int mathScore) {
+		super();
+		this.num = num;
+		this.name = name;
+		this.korScore = korScore;
+		this.engScore = engScore;
+		this.mathScore = mathScore;
+		this.sum = korScore + engScore + mathScore;
+	}
+
+	public String getNum() {
+		return num;
+	}
+
+	public void setNum(String num) {
+		this.num = num;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getKorScore() {
+		return korScore;
+	}
+
+	public void setKorScore(int korScore) {
+		this.korScore = korScore;
+	}
+
+	public int getEngScore() {
+		return engScore;
+	}
+
+	public void setEngScore(int engScore) {
+		this.engScore = engScore;
+	}
+
+	public int getMathScore() {
+		return mathScore;
+	}
+
+	public void setMathScore(int mathScore) {
+		this.mathScore = mathScore;
+	}
+
+	public int getSum() {
+		return sum;
+	}
+
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
+	@Override
+	public String toString() {
+		return "Student[학번= " + num + ", 이름 : " + name + ", 국어 : " + korScore + ", 영어 : " + engScore + ", 수학 : "
+				+ mathScore + ", 총점 :" + sum + " 등급 : " + rank + "]";
+
+	}
+
+	@Override
+	public int compareTo(Student stu) {
+
+		return this.getNum().compareTo(stu.getNum());
+	}
+
+}
