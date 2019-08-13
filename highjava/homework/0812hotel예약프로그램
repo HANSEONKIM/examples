@@ -1,0 +1,265 @@
+package homework_01;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+/*
+ * 문제)
+
+호텔 운영을 관리하는 프로그램 작성.(Map이용)
+- 키값은 방번호 
+
+실행 예시)
+
+**************************
+호텔 문을 열었습니다.
+**************************
+
+*******************************************
+어떤 업무를 하시겠습니까?
+1.체크인  2.체크아웃 3.객실상태 4.업무종료
+*******************************************
+메뉴선택 => 1 <-- 입력
+
+어느방에 체크인 하시겠습니까?
+방번호 입력 => 101 <-- 입력
+
+누구를 체크인 하시겠습니까?
+이름 입력 => 홍길동 <-- 입력
+체크인 되었습니다.
+
+*******************************************
+어떤 업무를 하시겠습니까?
+1.체크인  2.체크아웃 3.객실상태 4.업무종료
+*******************************************
+메뉴선택 => 1 <-- 입력
+
+어느방에 체크인 하시겠습니까?
+방번호 입력 => 102 <-- 입력
+
+누구를 체크인 하시겠습니까?
+이름 입력 => 성춘향 <-- 입력
+체크인 되었습니다
+
+*******************************************
+어떤 업무를 하시겠습니까?
+1.체크인  2.체크아웃 3.객실상태 4.업무종료
+*******************************************
+메뉴선택 => 3 <-- 입력
+
+방번호 : 102, 투숙객 : 성춘향
+방번호 : 101, 투숙객 : 홍길동
+
+*******************************************
+어떤 업무를 하시겠습니까?
+1.체크인  2.체크아웃 3.객실상태 4.업무종료
+*******************************************
+메뉴선택 => 2 <-- 입력
+
+어느방을 체크아웃 하시겠습니까?
+방번호 입력 => 101 <-- 입력
+체크아웃 되었습니다.
+
+*******************************************
+어떤 업무를 하시겠습니까?
+1.체크인  2.체크아웃 3.객실상태 4.업무종료
+*******************************************
+메뉴선택 => 1 <-- 입력
+
+어느방에 체크인 하시겠습니까?
+방번호 입력 => 102 <-- 입력
+
+누구를 체크인 하시겠습니까?
+이름 입력 => 허준 <-- 입력
+102방에는 이미 사람이 있습니다.
+
+*******************************************
+어떤 업무를 하시겠습니까?
+1.체크인  2.체크아웃 3.객실상태 4.업무종료
+*******************************************
+메뉴선택 => 2 <-- 입력
+
+어느방을 체크아웃 하시겠습니까?
+방번호 입력 => 101 <-- 입력
+101방에는 체크인한 사람이 없습니다.
+
+*******************************************
+어떤 업무를 하시겠습니까?
+1.체크인  2.체크아웃 3.객실상태 4.업무종료
+*******************************************
+메뉴선택 => 3 <-- 입력
+
+방번호 : 102, 투숙객 : 성춘향
+
+*******************************************
+어떤 업무를 하시겠습니까?
+1.체크인  2.체크아웃 3.객실상태 4.업무종료
+*******************************************
+메뉴선택 => 4 <-- 입력
+
+**************************
+호텔 문을 닫았습니다.
+**************************
+
+ * 
+ */
+public class Hotel_Reservation {
+
+	private Scanner s;
+	private Map<String,Reserve> hotelReserve;
+	
+	public Hotel_Reservation() {
+		s = new Scanner(System.in);
+		hotelReserve = new HashMap<String, Reserve>();
+	}
+	
+	public static void main(String[] args) {
+		new Hotel_Reservation().hotelReserveStart();
+	}
+	
+	//메뉴를 출력하는 메서드
+	
+	public void displayMenu() {
+		System.out.println();
+		System.out.println("어떤 업무를 하시겠습니까?");
+		System.out.print(" 1. 체크인");
+		System.out.print(" 2. 체크아웃");
+		System.out.print(" 3. 객실상태");
+		System.out.print(" 4. 업무종료");
+		System.out.println();
+		System.out.println("입력>>");
+	}
+	
+	//프로그램을 시작하는 메서드
+	public void hotelReserveStart() {
+		
+		System.out.println("****************************");
+		System.out.println("\r 호텔문 열었습니다");
+		System.out.println("****************************");
+
+		while(true)	{
+			
+			displayMenu();//메뉴출력
+			
+			int num = s.nextInt(); //메뉴번호입력
+			
+			switch(num) {
+			
+			case 1 : cin(); //체크인
+			break;
+			
+			case 2 : cout(); //체크아웃
+			break;
+			
+			case 3 : state(); // 객실상태
+			break;
+			
+			case 4 :
+				System.out.println("업무를 종료합니다...");
+			return;
+			
+			default :
+				System.out.println("잘못 입력햇습니다. 다시입력하세요");
+			
+			}
+			
+			
+		}
+		
+		
+	}
+
+
+	private void cin() { //체크인
+		
+		System.out.println();
+		System.out.println("어느방에 체크인 하시겟습니까?	");
+		System.out.print("방번호입력>>	");
+		String room = s.next();
+		
+		//이미 예약된 방인지 검사
+		
+		if(hotelReserve.get(room)!=null) {
+			System.out.println(room + " 번 방은 이미 예약된 방입니다.");
+			return;
+		}
+		System.out.println();
+		System.out.println("누구를 체크인 하시겟습니까?>>");
+		String name = s.next();
+		
+		hotelReserve.put(room, new Reserve(room,name));
+		System.out.println(name + "씨 \t" + room +"번 방 예약 완료 되었습니다.");
+	}
+
+
+	private void cout() {
+		System.out.println();
+		System.out.println("어느방을 체크아웃 하시겠습니까?");
+		System.out.println("방번호입력>>");
+		String room = s.next();
+		
+		if(hotelReserve.remove(room)==null) {
+			System.out.println(room + "은 예약된 방번호가 아닙니다.");
+		}else {
+			System.out.println(room + "은 체크아웃 되었습니다.");
+		}
+		
+		
+	}
+
+
+	private void state() {
+		Set<String> keySet = hotelReserve.keySet();
+		System.out.println();
+		System.out.println("****************************");
+		System.out.println("방번호             이름	            ");
+		System.out.println("****************************");
+
+		if(keySet.size() ==0) {
+			System.out.println("예약된 정보가 하나도 없습니다.");
+		}else {
+			Iterator<String> it = keySet.iterator();
+			
+			while(it.hasNext()) {
+				
+				String room = it.next();
+				Reserve r = hotelReserve.get(room);
+				System.out.println( r.getRoom()+"\t"+r.getName());
+			}
+		}
+		System.out.println();
+		System.out.println("****확인완료********");
+	}
+	
+	
+}
+
+class Reserve{ //예약Vo
+	
+	private String room ; //방번호
+	private String name ; //이름
+	
+	
+	public Reserve(String room, String name) {
+		super();
+		this.room = room;
+		this.name = name;
+	}
+	
+	public String getRoom() {
+		return room;
+	}
+	public void setRoom(String room) {
+		this.room = room;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+}
