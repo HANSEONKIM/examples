@@ -1,0 +1,86 @@
+package homework;
+
+import javax.swing.JOptionPane;
+
+public class Rock_Paper_Scissors {
+
+	public static boolean inputCheck = false;
+
+	public static void main(String[] args) {
+
+		Thread th1 = new DataInput();
+		Thread th2 = new CountDown();
+		
+		th1.start();
+		th2.start();
+	}
+
+}
+
+class DataInput extends Thread {
+
+	@Override
+	public void run() {
+		
+		//컴퓨터 
+		String com[] = {"가위","바위","보"};
+		
+		int ran  =(int)(Math.random()*3) ;
+		String computer = com[ran];  //컴퓨터 랜덤 발생 
+	
+		String msg = "";
+		
+		String str = JOptionPane.showInputDialog("가위/바위/보 입력하세요");
+
+		// 입력이 완료되면 inputCheck변수를 true로 변경한다.
+		Rock_Paper_Scissors.inputCheck = true;
+		
+		
+		if(computer.equals(str)) {
+			msg = "비겼습니다";
+		}else if(computer.equals("가위")&&str.equals("바위") ||computer.equals("보")&&str.equals("가위")||computer.equals("바위")&&str.equals("보")) {
+			msg = "당신이 이겼습니다";
+		}else {
+			msg = "컴퓨터가 이겼습니다.";
+		}
+						
+		
+
+		System.out.println("=====결과=======");
+		System.out.println("컴퓨터 :" + computer);
+		System.out.println("당신 : " + str);
+		System.out.println("결과 : " + msg);
+
+	}
+}
+
+class CountDown extends Thread {
+
+	@Override
+	public void run() {
+		
+	
+		
+		
+		for (int i = 5; i >= 1; i--) {
+
+			if (Rock_Paper_Scissors.inputCheck) {
+				return; // run()메서드가 종료되면 쓰레드도 끝난다.
+			}
+			System.out.println(i);
+
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
+		
+		// 5초가 경과되었는데도 입력이 없으면 프로글매을 종료한다.
+		System.out.println("게임에 졌습니다.");
+		System.exit(0); // 프로그램을 종료시키는 명령
+
+	}
+
+}
