@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function(){
+		
+		
+		//p태그에 hover
+		
+		//직접 css 주는 방법
+		
+		
+		/* $('p').hover(function(){
+			
+			$(this).css('background','crimson').css('color','white');
+		},function(){
+			$(this).css('background','white');
+		}) */
+		
+		//style class를 주는 방법
+	
+	$('p').hover(function() {
+		
+
+			$(this).addClass('styleClass');
+		}, function() {
+			$(this).removeClass();
+		})
+
+	})
+</script>
+<style>
+.styleClass{
+
+	background : red;
+	color : white;
+	border : 3px solid yellow;
+}
+
+</style>
+</head>
+<body>
+	<div class="box">
+		<pre>
+	<h2>hover(fn1, fn2)</h2>
+	mouseover, mouseout 의 이벤트를 실행
+	fn1 : mouseover
+	fn2 : mouseout
+</pre>
+		<br>
+		<h2>선택메뉴</h2>
+		<p>아메리카노</p>
+		<p>카라멜마키아토</p>
+		<p>프리미엄라떼</p>
+		<p>길다방 커피</p>
+
+	</div>
+</body>
+</html>
