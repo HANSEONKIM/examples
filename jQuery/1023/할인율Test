@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function() {
+
+		$('.guess_box img').hover(function() {
+
+			$(this).addClass('hover');
+
+		}, function() {
+
+			$(this).removeClass();
+		})
+
+		/*   $('.guess_box').one('click',function(){
+			
+			//p태그를 지운다.
+			$('p').remove();
+			
+			//랜덤발생 5~10
+			rand = Math.floor(Math.random() * 6 + 5);
+			
+			$('<p/>',{
+				'text': '할인율'+rand+"%"
+						
+			}).appendTo(this);
+		 */
+
+		$('.guess_box').on('click', function() {
+			$('p').remove();
+			//랜덤발생 5~10
+			rand = Math.floor(Math.random() * 6 + 5);
+
+			$('<p/>', {
+				'text' : '할인율' + rand + "%"
+
+			}).appendTo(this);
+			$(this).off('click');
+
+		})
+
+	})
+</script>
+</head>
+<style>
+#header {
+	border: none;
+}
+
+#main {
+	width: auto;
+	height: 500px;
+	border: none;
+}
+
+.guess_box {
+	hiehgt: 200px;
+	display: inline-block;
+	border: none;
+}
+
+img {
+	width: 150px;
+	hiehgt: 150px;
+}
+
+.hover {
+	border: 10px dotted black;
+}
+</style>
+<body>
+	<div id="header">
+		<h2>짱구와 친구들</h2>
+	</div>
+	<div id="main">
+		<div class="guess_box">
+			<img src="../images/철수.png" />
+		</div>
+		<div class="guess_box">
+			<img src="../images/유리.jpg" />
+		</div>
+		<div class="guess_box">
+			<img src="../images/짱구.png" />
+		</div>
+		<div class="guess_box">
+			<img src="../images/맹구.jpg" />
+		</div>
+	</div>
+
+</body>
+</html>
