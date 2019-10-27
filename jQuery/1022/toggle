@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	
+	$(function(){
+		
+		$('a').on('click',function(){
+		
+			$('div').toggle();
+		})
+		
+		
+	})
+	
+</script>
+<style>
+	div{
+		display : none;
+		
+	}
+
+</style>
+</head>
+<body>
+<pre>
+	<h2>toggle()</h2>
+	show( ) hie() 가 번갈아 가면서 반복적으로 수행
+	자세히 보기를 클릭하면 이순신의 내용이 show() hide()가 번갈아 가며 수행된다.
+	$('a').on('click',function(){
+		
+			$('div').toggle();
+		})
+	
+</pre>
+	<h1>이순신</h1>
+	<h2>조선시대의 해군</h2>
+	<a href="#">자세히보기</a>
+	<br />
+	<div>
+	한국사에서 독보적으로 유명한 군인이자 성웅이란 칭호가 따로 붙을 정도로 가장 드높은 영웅이며,<br>
+	 무장 이외에 역사적 인물 전체로 넓혀도 세종대왕과 함께 한국에서 가장 유명한 인물이다.<br>
+	  무신으로서도 인간으로서도 희대의 걸물이며, 파란만장한 삶을 산 사내이다. <br>
+	  그는 임진왜란 시기 조선 수군을 이끌고 해상에서 연전연승을 거듭하며 일본군의 보급로를 차단하여 북상을 저지하였는데, <br>
+	  전쟁 내내 적과 싸워 모든 전투에서 최소한의 희생으로 항상 승전을 거두었으며,<br>
+	   당시 임금인 선조[7]와 조정에게 지원은커녕 불합리한 모함과 추궁만 당하였으나 끝까지 충성을 다했고,<br>
+	    임진왜란 최후의 대전투인 노량 해전에서 장렬한 죽음을 맞이했다.		<br>
+	</div>
+</body>
+</html>
