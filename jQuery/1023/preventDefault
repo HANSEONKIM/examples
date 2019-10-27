@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function() {
+		$('a').click(function() {
+			//나이를 입력한다
+
+			a = prompt('나이를 입력하세요');
+
+			//비교 15세 이하이면 페이지 이동을 금지
+
+			if (a <= 15) {
+			//	event.preventDefault();
+				alert("이동금지입니다.");
+				
+				return false;
+
+			}
+
+		})
+
+	})
+</script>
+</head>
+<body>
+<pre>
+	
+
+	event.preventDefault();
+	또는 return false
+	
+	요소의 기본 이벤트를 금지
+	a: 페이지 이동 기능
+	button : submit기능
+	
+	a를 클릭하면 나이를 입력받아 15세 이하는 페이지 이동 금지
+</pre>
+	<div class="box">
+		<a href="http://www.naver.com">네이버</a>
+	</div>
+</body>
+</html>
