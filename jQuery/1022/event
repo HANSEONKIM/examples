@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function() {
+
+		//$('button').mousedown(function(event){
+// 		$('button').on('mousedown',function(event){
+		$('button').bind('mousedown',function(event){	
+		
+		info ="대상 : " +	event.target.tagName + " // " + " 좌표  : " + event.pageX + "," + event.pageY + "(" + event.screenX + " ," + event.screenY + ")" 
+					+ " 버튼 : " + event.button + " ctrl : " + event.ctrlKey + ", " + "shift : " + event.shiftKey;
+		
+	//	alert(info);
+		console.log(info);
+			
+		})
+		
+		
+		
+		$('.div1').mousedown(function(event){
+		
+		info ="대상 : " +	event.target.tagName + " // " + " 좌표  : " + event.pageX + "," + event.pageY + "(" + event.screenX + " ," + event.screenY + ")" 
+					+ " 버튼 : " + event.button + " ctrl : " + event.ctrlKey + ", " + "shift : " + event.shiftKey;
+		
+	//	alert(info);
+		console.log(info);
+		
+	
+		
+	//왼쪽버튼  down - 테두리를 설정
+	//가운데 버튼 down - 배경색을 변경
+	//오른쪽버튼  down - Hello 문자출력
+	
+	
+		if(event.button ==0){
+			$(this).css('border','5px dotted red');
+		}else if(event.button ==1){
+			$(this).css('background','red');
+		}else if(event.button ==2){
+			$(this).text("Hello").appendTo(this);
+		}
+			
+		})
+		
+		
+		
+		
+	})
+</script>
+<style>
+.div1 {
+	width: 300px;
+	height: 200px;
+	background-color: #D0FA58;
+	border : 2px solid green;
+}
+</style>
+</head>
+<body>
+	<div class="box">
+	<div class="div1"></div>
+	<br>
+	<button>버튼</button>
+	</div>
+</body>
+</html>
