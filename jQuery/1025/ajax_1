@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function() {
+
+		xhr = new XMLHttpRequest();
+
+		$('#txt').click(function() {
+
+			//요청
+			xhr.open('get', 'txtData.jsp', true);
+			xhr.send();
+
+			//응답
+			xhr.onreadystatechange = function() {
+
+				if (this.readyState == 4 && this.status == 200) {
+					res = this.responseText;
+					//태조/정종/태조/세종/문종/단종/세조/예종/성종
+
+					var datas = res.split("/");
+
+					var code = "<ul>";
+
+					$.each(datas, function(i) {
+
+						code += "<li>" + datas[i] + "</li>"
+
+					})
+
+					code += "</ul>";
+
+				}
+				$('#txtres').html(code);
+			}
+
+		})
+
+		$('#jobj').click(function() {
+
+			//응답
+
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					res = JSON.parse(this.responseText);
+
+					var code = "";
+
+					code += "이름 : " + res.name + "<br>";
+					code += "전화번호 : " + res.tel + "<br>";
+					code += "우편번호 : " + res.zip + "<br>";
+					code += "주소 : " + res.addr + "<br>";
+
+				}
+				
+				$("#jobres").html(code);
+
+			}
+
+			//요청
+			xhr.open("get", "jobData.jsp", true);
+			xhr.send();
+
+		})
+		
+		
+		$('#jarr').click(function(){
+			
+			
+			//요청
+			xhr.open("get","jarrData.jsp",true);
+			xhr.send();
+			
+			
+			//응답
+			
+			
+			xhr.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status ==200){
+					
+					res = JSON.parse(this.responseText);
+					
+				
+					var code = "<ol>";
+					
+					$.each(res,function(i){
+						
+						code += "<li>" +res[i] + "</li>";
+					})
+					
+					code += "</ol>";
+					$('#jarrres').html(code);
+					
+				}
+			}
+			
+		})
+		
+		$('#joarr').click(function(){
+			
+			
+			//요청
+			xhr.open("get","jobjarrData.jsp",true);
+			xhr.send();
+			
+			
+			//응답
+			
+			
+			xhr.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status ==200){
+					
+					res = JSON.parse(this.responseText);
+									
+					var code = "";
+					
+					$.each(res,function(i){
+						
+						code += [i+1] + "번째 회원 자료 <br>"
+						code += "이름 : " + res[i].name + "<br>";
+						code += "전화번호 : " + res[i].tel + "<br>";
+						code += "우편번호 : " + res[i].zip + "<br>";
+						code += "주소 : " + res[i].addr + "<br><br>";
+						
+					})
+					
+					$('#joarrres').html(code);
+					
+				}
+			}
+			
+		})
+		
+		
+		
+		
+
+	})
+</script>
+<style>
+.box {
+	height: auto;
+	padding: 10px;
+}
+
+.div {
+	float: left;
+	width: 250px;
+	margin: 5px;
+}
+</style>
+</head>
+<body>
+	<div class="box">
+		<button type="button" id="txt">text읽기</button>
+		<button type="button" id="jobj">json읽기</button>
+		<button type="button" id="jarr">jsonArr읽기</button>
+		<button type="button" id="joarr">jsonObjArr읽기</button>
+		<br> <br>
+	</div>
+	<br>
+	<div class="div" id="txtres" title="txt형식" ></div>
+	<div class="div" id="jobres" title="json형식"></div>
+	<div class="div" id="jarrres" title="배열"></div>
+	<div class="div" id="joarrres" title="json배열"></div>
+
+</body>
+</html>
