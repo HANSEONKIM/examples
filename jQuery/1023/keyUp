@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+
+$(function(){
+	
+$('textarea').on('keyup',function(){
+	
+	//1. 입력한 값의 글자수를 얻어온다.
+	a =	$(this).val().length;
+	
+	//2. 100- 입력한 글자수
+	
+	b = 100-a;
+		
+	//3. span요소에 2번의 결과값으로 span요소를 변경
+	$('span').text(b);
+	
+	//글자수가 100이 되었느냐?
+			if(b==0){
+// 				$(this).attr('disabled','disabled');
+// 				$(this).attr('readonly',true);
+				$('textarea').prop('disabled',true);
+				
+			}
+			//그렇다면 textarea에 더이상 입력되지 않도록 한다.(disabled,readonly)
+})
+})
+
+
+
+
+</script>
+</head>
+<body>
+<pre>
+	
+</pre>
+<div class="box">
+	<h2>하고싶은 말을 남겨주세요(100글자 이내)</h2>
+</div>
+<textarea cols="50" rows="10"></textarea>
+<br /><br>
+<p>남은 글자수<span>100</span></p>
+
+</body>
+</html>
