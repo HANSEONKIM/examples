@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bookList</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+
+
+	$(function(){
+	
+		$('a').click(function(){
+			event.preventDefault();
+			
+			//href 의 속성값을 가져온다. ->변수에 넣음
+					a =	$(this).attr('href');
+			//현재 그림 사라짐
+			
+			$('img').fadeOut(function(){$('img').attr('src',a).show();});
+			
+			
+			
+			
+			
+		});
+			
+		
+		
+				
+				
+		
+	})
+	
+
+
+
+
+</script>
+<style>
+	img{
+		width : 200px;
+		heigth : 200px;
+	}
+</style>
+</head>
+<body>
+<div class="box">
+	<h2>교재 리스트</h2>
+<ul>
+	<li><a href="../images/jQuery.jpg">jQuery교재</a></li>
+	<li><a href="../images/JSP2_1.jpg">JSP교재</a></li>
+	<li><a href="../images/UML.jpg">UML교재</a></li>
+	<li><a href="../images/ajaxin.jpg">AJAX교재</a></li>
+</ul>
+<br>
+<img src="../images/noImage.png">
+</div>
+
+</body>
+</html>
