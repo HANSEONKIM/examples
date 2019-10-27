@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bind_button</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+
+	$(function(){
+		
+		
+		$('div button').bind('click',function(){
+			
+			//새로운 버튼 생성
+			$('<button/>',{
+				
+				'type' : 'button'
+				,'text' : '새로운 버튼'
+				
+				
+				
+			}).appendTo('.div2');
+			
+		})
+		
+		//해제버튼 클릭 이벤트
+		
+	//	$('#clear').on('click',function(){})
+		$('#clear').bind('click',function(){
+			
+			//$('div button').unbind('click');
+			$('div button').off('click');
+		})
+
+		
+		
+	})
+
+
+
+
+
+</script>
+<style>
+
+	.div1{
+		border : 2px solid blue;
+		padding : 10px;
+	}
+
+	
+</style>
+</head>
+<body>
+<pre>
+	- 이벤트 핸들러 등록 =>>>>bind 방식
+		>>실행 이전에 body 태그에 이미 만들어져 있는 요소를 대상으로 한다.
+		>>실행 이후에 새롭게 만들어지는 새로운 버튼에 대해서는 이벤트핸들러가 호출되지 않는다.
+		$('div button').bind('click',function(){
+	- 등록된 이벤트 핸들러를 해제시키기 위해서는 off , unbind를 사용
+		$('div button').unbind('click');
+			$('div button').off('click');
+		})
+	
+</pre>
+	<div class="div1">
+		<button type="button">버튼1</button>
+		<button type="button">버튼2</button>
+		<button type="button">버튼3</button>
+	</div>
+	<br>
+	<button id="clear" type="button">해제</button>
+	<br>
+	<hr>
+	<div class="div2">
+	</div>
+</body>
+</html>
