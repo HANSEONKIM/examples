@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function() {
+
+		//bind방식 on 대신 bind를 사용할 수 잇음.
+		file = "";
+		count = 0;
+		
+		//bind 방식의 이벤트 핸들러 등록
+		$('.add').on('click', function() {
+			count++
+			file = '<span id = "'+ count +'">';
+			file += count+'파일 : <input type = "file">';
+			file += '<button class ="del '+ count +'">삭제</button><br></span>';
+
+			$('div').append(file);
+		})
+		
+		
+		
+		 //한번만 실행 가능  이벤트가 자동으로 해제됨 one/* 
+		$('.add').one('click', function() {
+			count++
+			file = '<span id = "'+ count +'">';
+			file += count+'파일 : <input type = "file">';
+			file += '<button class ="del '+ count +'">삭제</button><br></span>';
+
+			$('div').append(file);
+		})
+ */		
+		
+		
+		
+		
+
+		//delegate 방식임.
+		$('div').on('click', '.del', function() {
+			vclass = $(this).attr('class');
+			// 			console.log(vclass);
+			vclass = vclass.split(" ");
+			// 			console.log(vclass[0]+","+vclass[1]);
+
+			$('#' + vclass[1]).remove();
+// 			$('span[id=' + vclass[1] + ']').remove();
+
+		})
+	})
+</script>
+</head>
+<body>
+	<div>
+		이름 : <input type="text"><br> 파일 : <input type="file">
+		<button class="add" type="button">추가</button>
+		<br>
+
+
+	</div>
+</body>
+</html>
