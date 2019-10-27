@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function(){
+	//	$(document).mousemove(function(event){
+	//	$(document).on('mousemove',function(event){
+		$(document).bind('mousemove',function(event){
+			xy = event.pageX + "," + event.pageY + "(" + event.screenX + ", " + event.screenY + " )" ;
+			
+			$('#log').text(xy);
+			
+			//x,y 좌표가 동시에 200, 200 이면 이미지를 생성하고 추가한다.
+			
+			
+			
+			if(event.pageX==200 && event.pageY==200){
+				$('<img/>',{
+					'src' : '../images/보노보노.jpg'
+					,'width' : '300px'
+					,'height' : '300px'
+					
+				}).appendTo('body');
+			}
+			
+			
+			
+			
+			
+		})
+		
+		
+		
+	})
+</script>
+<style>
+body {
+	background-color: #eef;
+}
+
+div {
+	padding: 20px;
+}
+</style>
+</head>
+<body>
+
+
+
+	<div id="log"></div>
+
+
+</body>
+</html>
