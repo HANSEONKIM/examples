@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>effect_test</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+
+
+$(function(){
+	
+	
+	$('#show').click(function(){
+		$('img').show('slow','swing',function(){alert("짱구안녕");});
+		
+		
+	})
+	$('#hide').click(function(){
+		$('img').hide('fast','linear',function(){alert("잘가.");});
+		
+	})
+	
+	$('#tog').click(function(){
+		
+		$('img').toggle(500);
+		
+	})
+	
+	$('#sup').click(function(){
+		
+		$('img').slideUp('fast','swing');
+		
+	})
+	$('#sdown').click(function(){
+		
+		$('img').slideDown();
+	})
+	$('#stog').click(function(){
+		
+		$('img').slideToggle();
+	})
+	
+	//투명도
+	$('#fin').click(function(){
+		
+		$('img').fadeIn(1000);
+	})
+	$('#fout').click(function(){
+		
+		$('img').fadeOut(500);
+	})
+	$('#ftog').click(function(){
+		
+		$('img').fadeToggle("slow");
+	})
+	
+	
+})
+
+
+
+
+</script>
+<style>
+	img{
+		width : 200px;
+		heigth : 200px;
+	}
+</style>
+</head>
+<body>
+<div class="box">
+	<button type="button" id="show">Show</button>
+	<button type="button" id="hide">Hide</button>
+	<button type="button" id="tog">Toggle</button>
+	<button type="button" id="sup">SlideUp</button>
+	<button type="button" id="sdown">SlideDown</button>
+	<button type="button" id="stog">Slide Toggle</button>
+	<button type="button" id="fin">FadeIn</button>
+	<button type="button" id="fout">Fade Out</button>
+	<button type="button" id="ftog">Fade Toggle</button>
+	<br>
+	<br>
+	<img src="../images/짱구2.png"  />
+</div>
+</body>
+</html>
