@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>animate_test</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function() {
+
+		$('button#right').click(function() {
+
+			$('.box1 img').animate({
+				left : '+=100px'
+			}, 300);
+		})
+
+		$('button#left').click(function() {
+
+			$('#smile').animate({
+				left : '-=100px'
+			}, 300);
+		})
+
+		$('button#start').click(function() {
+
+			//		 $('.box2 img').animate({left : '+=200px', opacity : '-=0.8'},500);
+
+			setInterval(function() {
+
+				$('.box2 img').animate({
+					left : '+=200px'
+				}, 500).delay(100).animate({
+					opacity : '-=0.8'
+				}, 500).delay(100).animate({
+					left : '-=200px'
+				}, 500).delay(100).animate({
+					opacity : '+=1.0'
+				}, 100);
+
+			}, 100)
+
+		})
+
+		$('#start2').click(function() {
+
+			setInterval(function() {
+
+				$('p').animate({
+					fontSize : '+=15px'
+				}, 500);
+
+				$('p').queue(function() {
+
+					//색깔 랜덤 주기
+
+					r = Math.floor(Math.random() * 255);
+					g = Math.floor(Math.random() * 255);
+					b = Math.floor(Math.random() * 255);
+
+					r = r.toString(16);
+					g = g.toString(16);
+					b = b.toString(16);
+
+					//	$(this).css('color', 'rgb(' + r + ',' + g + ',' + b + ')'); //rgb사용
+					$(this).css('color', '#' + r + g + b);
+					$(this).dequeue();
+				});
+				//
+
+				$('p').animate({
+					left : '+=100px'
+				}, 500);
+				///////////////////////////////////////////////////////////////////	
+				$('p').animate({fontSize : '-=15px'}, 500);
+
+				$('p').queue(function() {
+
+					//색깔 랜덤 주기
+
+					r = Math.floor(Math.random() * 255);
+					g = Math.floor(Math.random() * 255);
+					b = Math.floor(Math.random() * 255);
+
+					r = r.toString(16);
+					g = g.toString(16);
+					b = b.toString(16);
+
+					//	$(this).css('color', 'rgb(' + r + ',' + g + ',' + b + ')'); //rgb사용
+					$(this).css('color', '#' + r + g + b);
+					$(this).dequeue();
+				});
+				//
+
+				$('p').animate({left : '-=100px'}, 500);}, 100)
+
+		})
+
+	})
+</script>
+<style>
+img {
+	width: 300px;
+	height: 300px;
+	position: relative;
+}
+
+p {
+	position: relative;
+}
+</style>
+</head>
+<body>
+	<div class="box box1">
+		<img id="smile" src="../images/스마일.png" title="스마일" /> <br /> <br>
+		<button id="right" type="button">오른쪽으로 이동</button>
+		<button id="left" type="button">왼쪽쪽으로 이동</button>
+
+	</div>
+	<br>
+	<br>
+	<div class="box box2">
+		<img src="../images/스마일.png" title="스마일" /> <br /> <br>
+		<button id="start" type="button">시작</button>
+
+	</div>
+
+	<br>
+	<br>
+	<div class="box box3">
+		<p>무궁화 꽃이 피었습니다.</p>
+		<br>
+		<button id="start2" type="button">시작</button>
+
+	</div>
+</body>
+</html>
