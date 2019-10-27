@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function() {
+
+		res = "";
+		$.each($('.di1 img'),function(i){
+			//title 설정
+			$(this).attr('title',i + "번째 이미지 입니다.") + "\n";
+		})
+		
+		
+		
+		//가져온 title 값 보이기
+		$.each($('.di1 img'),function(i){
+			
+			res += $(this).attr('title') + "\n";
+		})
+		
+		
+		
+		
+	//	alert(res);
+		
+		
+		
+		
+// 		$('button').click(function(){
+//		$('button').on('click',function(){	
+		$('button').bind('click',function(){	
+			
+				
+		//title 속성을 설정
+			$('.di img').attr('title',function(){
+				//src의 속성값을 가져온다
+				vsrc = $(this).attr('src');
+				start = vsrc.lastIndexOf("/")+1;
+				end = vsrc.lastIndexOf(".");
+				
+					vtitle = 	vsrc.substring(start,end);
+				
+					return vtitle;
+				
+			})
+		})
+		
+		
+		
+		
+		
+		
+		
+	})
+</script>
+<style>
+img {
+	width: 200px;
+	hiehgt: 200px;
+}
+</style>
+</head>
+<body>
+	<pre>
+	----------- attr('title') : title의 속성값을 가져온다.------------------------
+			$(this).attr('title') + "\n";
+	
+	-----------	attr('title','value') : title 을 value 값으로 title 속성 설정------
+		$.each($('img'),function(i){
+			//title 설정
+			$(this).attr('title',i + "번째 이미지 입니다.") + "\n";
+		})
+		
+	</pre>
+<div class="di1">
+	<img title="12345" src="../images/보노보노.jpg">
+	<img title="12345" src="../images/보노보노.png">
+	<img title="12345" src="../images/아메리카노.jpg">
+	<img title="12345" src="../images/짱구.png">
+	<img title="12345" src="../images/짱구2.png">
+</div>	
+	
+	
+	<pre>
+		$('.di img').attr('title',function(){
+				//src의 속성값을 가져온다
+				vsrc = $(this).attr('src');
+				start = vsrc.lastIndexOf("/")+1;
+				end = vsrc.lastIndexOf(".");
+				
+					vtitle = 	vsrc.substring(start,end);
+				
+					return vtitle;
+				
+			})
+		
+	</pre>
+	
+	<div class="di">
+	
+	<img title="12345" src="../images/보노보노.jpg">
+	<img title="12345" src="../images/보노보노.png">
+	<img title="12345" src="../images/아메리카노.jpg">
+	<img title="12345" src="../images/짱구.png">
+	<img title="12345" src="../images/짱구2.png">
+	
+	
+	</div>
+	<button type="button">title생성하기</button>
+
+
+</body>
+</html>
