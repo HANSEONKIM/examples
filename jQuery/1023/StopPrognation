@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>stopPropagation</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function() {
+
+		//span에 클릭 이벤트 핸들러  - 배경색 변경, 빨강
+
+		$('.box1 span').click(function() {
+			event.stopPropagation();
+			$(this).css('background', 'red');
+		})
+
+		//h1에 클릭 이벤트 핸들러 -  배경색 변경, 그린
+
+		$('h1').click(function() {
+
+			$(this).css('background', 'green');
+
+		})
+		
+		
+		//클릭이벤트
+		$('.box2 div').click(function(){
+			//배경색 변경
+			$(this).css('background','black');
+		//	alert("div");
+		})
+		
+		$('.box2 span').click(function(){
+			$(this).css('border','5px dotted blue');
+			event.stopPropagation();
+// 			alert("span");
+		})
+		
+		$('.box2 button').click(function(){
+			$(this).text('hello');
+			event.stopPropagation();
+// 			alert("button");
+		})
+		
+		
+	})
+</script>
+<style>
+.box2 div span{
+
+	width : 200px;
+	hieght : 200px;
+	background : yellow;
+	display : inline-block;
+	padding : 30px;
+	
+	
+	
+}
+.box2 div{
+	width : 300px;
+	hieght : 300px;
+	padding : 20px;
+
+	background : pink;
+}
+
+button{
+	
+	
+}
+
+</style>
+</head>
+<body>
+	<pre>
+	event.stopPropagation()
+	또는 return false
+	
+	이벤트 버블링 금지
+	자식의 이벤트가 발생시 부모의 이벤트가 발생되지 않도록 한다.
+	
+	작은 영역을 클릭하면 빨강색
+	큰 제목을 클릭하면 녹색
+	
+	작은 영역을 클릭할 때 빨강색으로 변경되면서 동시에 녹색으로 변경되지 않도록 한다.
+	
+</pre>
+	<div class="box box1">
+
+		<h1>
+			큰제목안에 <span> 작은 영역</span>이 있다
+		</h1>
+	</div>
+
+	<div class="box box2">
+		<div>
+			<span>
+				<button>클릭하세요</button>
+			</span>
+		</div>
+	</div>
+</body>
+</html>
