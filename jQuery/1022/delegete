@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+
+	$(function(){
+		
+/* 		$(document).delegate('div button','click',function(){
+			
+			$('<button/>',{ 
+				'type' : 'button'
+				,'text' : '새로운 버튼'
+				
+				
+			}).appendTo('.div2');
+			
+		}) */
+		
+/* 		$(this).on('click','div button',function(){
+			$('<button/>',{ 
+				'type' : 'button'
+				,'text' : '새로운 버튼'
+				
+				
+			}).appendTo('.div2');
+			
+		}) */
+		
+		$('div').on('click','button',function(){
+			$('<button/>',{ 
+				'type' : 'button'
+				,'text' : '새로운 버튼'
+				
+				
+			}).appendTo('.div2');
+			
+		})
+		
+		
+		//해제버튼 클릭하면
+		$('#clear').on('click',function(){
+			
+// 			$('div').off('click');
+			$('div').undelegate('click');
+		})
+		
+		
+	})
+	
+	
+
+	
+</script>
+<style>
+.div1 {
+	border: 2px solid blue;
+	padding: 10px;
+}
+.div2 {
+	border: 2px solid blue;
+	padding: 10px;
+}
+</style>
+</head>
+<body>
+<pre>
+	이벤트 핸들러 등록 - delegate
+	실행전에 미리 만들어져 있는 요소 뿐만 아니라 ,
+	실행도중에 새롭게 만들어지는 새로운 요소에도 이벤트 핸들러를 호출할 수 있다.
+	$(document).delegate('div button','click',function(){})
+	$('div').on('click','button',function(){})
+	$('div').delegate('button','click',function(){})
+	
+	
+	>>해제
+	$('div').off('click');
+	$('div').undelegate('click');
+	$('div').unbind('click');
+	
+	
+	
+</pre>
+	<div class="div1">
+		<button type="button">버튼1</button>
+		<button type="button">버튼2</button>
+		<button type="button">버튼3</button>
+	</div>
+	<br>
+	<button id="clear" type="button">해제</button>
+	<br>
+	<hr>
+	<div class="div2"></div>
+</body>
+</html>
