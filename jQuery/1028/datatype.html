@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function() {
+
+		$('#txt').click(function() {
+
+			
+			$.get(
+					'../1025/txtData.jsp',	function(res) {
+
+						var datas = res.split("/");
+
+						var code = "<ul>";
+						$.each(datas, function(i) {
+
+							code += "<li>" + datas[i] + "</li>"
+						})
+
+						code += "<ul>";
+						$('#txtres').html(code);
+					},	
+					'text'
+			
+			)
+			
+			/* $.ajax({
+
+				url : '../1025/txtData.jsp',
+				type : 'get',
+
+				success : function(res) {
+
+					var datas = res.split("/");
+
+					var code = "<ul>";
+					$.each(datas, function(i) {
+
+						code += "<li>" + datas[i] + "</li>"
+					})
+
+					code += "<ul>";
+					$('#txtres').html(code);
+				},
+				error : function(xhr) {
+					alert("상태 : " + xhr.status)
+
+				},
+				dataType : 'text'
+
+			}) */
+			
+			
+			
+			
+			
+			
+			
+
+		})
+
+		$('#jobj').click(function() {
+			
+			
+			$.get(
+					'../1025/jobData.jsp',function(res) {
+
+						var code = "";
+
+						code += "이름 : " + res.name + "<br>";
+						code += "전화번호 : " + res.tel + "<br>";
+						code += "우편번호 : " + res.zip + "<br>";
+						code += "주소 : " + res.addr + "<br>";
+
+
+					
+						$('#jobres').html(code);
+
+					},'json'
+
+			
+			
+			)
+			
+			
+			
+			
+
+			/* $.ajax({
+
+				url : '../1025/jobData.jsp',
+				type : 'get',
+
+				success : function(res) {
+
+					var code = "";
+
+					code += "이름 : " + res.name + "<br>";
+					code += "전화번호 : " + res.tel + "<br>";
+					code += "우편번호 : " + res.zip + "<br>";
+					code += "주소 : " + res.addr + "<br>";
+
+
+				
+					$('#jobres').html(code);
+
+				},
+				error : function(xhr) {
+					alert("상태 : " + xhr.status)
+
+				},
+				dataType : 'json'
+
+			}) */
+
+		})
+
+		$('#jarr').click(function() {
+			
+			
+			$.getJSON(
+					
+					'../1025/jarrData.jsp',
+					function(res) {
+
+						var code = "<ol>";
+
+						$.each(res, function(i) {
+
+							code += "<li>" + res[i] + "</li>";
+						})
+						$("#jarrres").html(code);
+
+					}
+					
+			
+			)
+			
+			
+			
+
+			/* $.ajax({
+				url : '../1025/jarrData.jsp',
+				type : 'get',
+
+				success : function(res) {
+
+					var code = "<ol>";
+
+					$.each(res, function(i) {
+
+						code += "<li>" + res[i] + "</li>";
+					})
+					$("#jarrres").html(code);
+
+				},
+				error : function(xhr) {
+					alert("상태 : " + xhr.status)
+
+				},
+				dataType : 'json'
+
+			})
+ */
+		})
+
+		$('#joarr').click(function() {
+			
+			
+			$.getJSON(
+					'../1025/jobjarrData.jsp',
+					
+					function(res) {
+
+						var code = "";
+
+						$.each(res, function(i) {
+
+							code += [ i + 1 ] + "번째 회원 자료 <br>"
+							code += "이름 : " + res[i].name + "<br>";
+							code += "전화번호 : " + res[i].tel + "<br>";
+							code += "우편번호 : " + res[i].zip + "<br>";
+							code += "주소 : " + res[i].addr + "<br><br>";
+
+						})
+						$('#joarrres').html(code);
+
+					}
+			
+			
+			)
+			
+			
+
+			/* $.ajax({
+
+				url : '../1025/jobjarrData.jsp',
+				type : 'get',
+
+				success : function(res) {
+
+					var code = "";
+
+					$.each(res, function(i) {
+
+						code += [ i + 1 ] + "번째 회원 자료 <br>"
+						code += "이름 : " + res[i].name + "<br>";
+						code += "전화번호 : " + res[i].tel + "<br>";
+						code += "우편번호 : " + res[i].zip + "<br>";
+						code += "주소 : " + res[i].addr + "<br><br>";
+
+					})
+					$('#joarrres').html(code);
+
+				},
+				error : function(xhr) {
+					alert("상태 : " + xhr.status)
+
+				},
+				dataType : 'json'
+
+			}) */
+
+		})
+
+	})
+</script>
+<style>
+.box {
+	height: auto;
+	padding: 10px;
+}
+
+.div {
+	float: left;
+	width: 250px;
+	margin: 5px;
+}
+</style>
+</head>
+<body>
+	<div class="box">
+		<button type="button" id="txt">text읽기</button>
+		<button type="button" id="jobj">json읽기</button>
+		<button type="button" id="jarr">jsonArr읽기</button>
+		<button type="button" id="joarr">jsonObjArr읽기</button>
+		<br> <br>
+	</div>
+	<br>
+	<div class="div" id="txtres" title="txt형식"></div>
+	<div class="div" id="jobres" title="json형식"></div>
+	<div class="div" id="jarrres" title="배열"></div>
+	<div class="div" id="joarrres" title="json배열"></div>
+
+</body>
+</html>
