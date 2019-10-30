@@ -1,0 +1,50 @@
+package kr.or.ddit.buyer.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+
+import kr.or.ddit.buyer.vo.BuyerVO;
+import kr.or.ddit.ibatis.config.sqlMapClientFactory;
+
+public class BuyerDaoImpl implements IBuyerDao {
+
+	//sqlMapClient필요 - 얻어온다.
+		private SqlMapClient client;
+	
+		
+	//singeton을 위한 자신의 객체를 생성하여 리턴.	
+	private static BuyerDaoImpl dao;
+	
+	public static IBuyerDao getInstance(){
+		
+		if(dao ==null) dao = new BuyerDaoImpl();
+		
+		return dao;
+	}
+	
+	
+	
+	//dao 사용하기 위한 client .. 가져옴.
+	private BuyerDaoImpl(){
+		
+		client = sqlMapClientFactory.getInstance();
+		
+	}
+	
+	
+	
+	
+	
+	@Override
+	public List<BuyerVO> getBuyerNames() throws SQLException {
+		return client.queryForList("buyer.getBuyerNames");
+	}
+
+	@Override
+	public BuyerVO getDetail(String buyer_id) throws SQLException {
+		return (BuyerVO) client.queryForObject("buyer.getDetail",buyer_id);
+	}
+
+}
