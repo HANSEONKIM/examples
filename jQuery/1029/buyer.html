@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+
+			url : '/jqpro/BuyerList',
+			type : 'get',
+			success : function(res) {
+
+				
+/*  code="";
+				$.each(res, function(i) {
+
+					code += "<p id = '"+ res[i].id+"'>" + res[i].name + "</p>";
+
+				})
+				$('#names').html(code); */
+				
+				$.each(res, function(i){
+					var code = $('<p/>',{
+						'id'   : res[i].id,
+						'text' : res[i].name 
+					})
+					$('#names').append(code);
+				})
+				
+
+			},
+
+			error : function(xhr) {
+
+				alert("현재상태..." + xhr.status + "에러메시지 ...\n text :"
+						+ xhr.statusText);
+
+			},
+			dataType : "json"
+
+
+			
+		})
+		
+		$('#names').on('mouseover','p',function(){
+			$(this).css('background','yellow');
+			
+		})
+		$('#names').on('mouseout','p',function(){
+			$(this).css('background','none');
+			
+		})
+		 
+		 
+		
+		
+
+		 
+		 
+		 
+		$('#names').on('click', 'p', function() {
+
+			idvalue = $(this).attr('id');
+			
+			
+			
+			$.ajax({
+				
+				url:'/jqpro/BuyerList',
+				type : 'post',
+				data : {"id" : idvalue},
+				dataType : 'json',
+				success : function(res){
+					var code = "<table border='1'  class='table table-striped'>";
+					code += "<tr><td>BUYER_ID</td><td>"+res.id+"</td></tr>";
+					code += "<tr><td>BUYER_Name</td><td>"+res.name+"</td></tr>";
+					code += "<tr><td>BUYER_GU</td><td>"+res.gu+"</td></tr>";
+					code += "<tr><td>BUYER_MAIL</td><td>"+res.mail+"</td></tr>";
+					code += "<tr><td>BUYER_BANKNO</td><td>"+res.bankno+"</td></tr>";
+					code += "<tr><td>BUYER_BANKNAME</td><td>"+res.bankname+"</td></tr>";
+					code += "<tr><td>BUYER_BANK</td><td>"+res.bank+"</td></tr>";
+					code += "<tr><td>BUYER_ZIP</td><td>"+res.zip+"</td></tr>";
+					code += "<tr><td>BUYER_ADD</td><td>"+res.add1+" "+res.add2+"</td></tr>";
+				
+					code += "<tr><td>BUYER_COMTEL</td><td>"+res.comtel+"</td></tr>";
+					code+="</table>";
+					
+					$('#detail').html(code);
+					
+				
+					
+					
+				},
+				error : function(xhr){
+					alert("현재상태..." + xhr.status + "에러메시지 ...\n text :"
+							+ xhr.statusText);
+					
+				}
+				
+			})
+
+		})
+
+	})
+</script>
+<style>
+td {
+	width: 200px;
+	heigth: auto;
+	padding: 20px;
+}
+
+/* #names p:hover{
+	background : blue;
+} */
+</style>
+</head>
+<body>
+	<div class="box">
+		<table border="1" class="table table-striped">
+			<tr>
+				<td>거래처이름</td>
+				<td>거래처상세정보</td>
+			</tr>
+
+			<tr>
+				<td id="names"></td>
+				<td id="detail"></td>
+
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
