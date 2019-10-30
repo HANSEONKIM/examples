@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+	$(function() {
+		$('#ajax').click(function() {
+
+			//입력한 값을 가져온다.
+			
+			name = $('#name').val();
+			age = $('#age').val();
+			
+			$.ajax({
+				
+				url : '../1025/first.jsp',
+				type : 'post',
+				data : {"name" : name, "age" : age},
+// 				data : "name=" + name + "&age=" + age,
+				
+				success : function(res){
+					
+					$('#result').html(res);
+					
+				},
+				error : function(xhr){
+					
+					alert("상태 : "  + xhr.status)
+					
+				},
+				
+				dataType : 'html'
+			
+
+			})
+
+		})
+
+	})
+</script>
+</head>
+<style>
+input[type=text] {
+	width: 250px;
+	height: 25px;
+}
+</style>
+<body>
+	<div class="box">
+		<pre>
+			<h3></h3>
+		</pre>
+		<form id="ff" >
+			이름 : <input type="text" id="name" name="name" /><br> <br>
+			나이 : <input type="text" id="age" name="age" /> <br> <br>
+			<button type="button" id="ajax">Ajax방식</button>
+		</form>
+		<br>
+		<div id="result"></div>
+		<hr>
+		<br>
+
+	</div>
+</body>
+</html>
