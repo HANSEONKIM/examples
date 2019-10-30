@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+$(function(){
+	
+	$('button#bhtml').click(function(){
+		
+		$.ajax({
+		
+			url : 'member_html.jsp',
+			type : 'get',
+			success : function(res){
+				
+				$('#result').html(res)
+			},
+			error : function(xhr){
+				
+				alert("상태  : " + xhr.status)
+				
+			},
+			dataType : 'html'
+			
+		})
+		
+		
+	})
+		
+	
+	
+	
+	$('button#bjson').click(function(){
+		
+		$.ajax({
+			
+			url : 'member.jsp',
+			type : 'get',
+			success : function(res){
+				var code = "<table border='2'><tr>";
+				code += "<td>아이디</td><td>이름</td><td>생일</td><td>전화번호</td>";
+				code += "<td>우편번호</td><td>주소</td><td>상세주소</td><td>메일</td>";
+				code += "</tr>";
+				$.each(res, function(i){
+					
+				code += "<tr>";	
+				code += "<td>"+res[i].id+"</td><td>"+res[i].name+"</td><td>"+res[i].bir+"</td><td>"+res[i].hp+"</td>";
+				code += "<td>"+res[i].zip+"</td><td>"+res[i].add1+"</td><td>"+res[i].add2+"</td><td>"+res[i].mail+"</td>";
+				code += "</tr>";		
+					
+				})
+				
+				code += "</table>";
+				
+				$('#result').html(code);
+				
+			},
+			error : function(xhr){
+				alert("상태" +xhr.status);
+				
+			},
+			dataType : 'json'
+			
+		})
+			
+		
+	})
+	
+	
+})
+
+
+
+
+
+
+</script>
+<style>
+	td{
+		font-size : 15px;
+	}
+</style>
+</head>
+<body>
+
+
+	<div class="box">
+		<button type="button" id="bjson">멤버리스트-json</button>
+		<button type="button" id="bhtml">멤버리스트-html</button>
+		<br />
+		<div id="result"></div>
+	</div>
+</body>
+</html>
