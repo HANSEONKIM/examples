@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap    
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map  2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="member">
+	<typeAlias alias="memberVO" type="kr.or.ddit.vo.MemberVO" />
+
+	<sql id="selectAll">
+		SELECT
+		*
+		FROM MEMBER
+		WHERE MEM_DELETE ='n'
+	</sql>
+
+
+
+	<select id="memberInfo" parameterClass="map" resultClass="memberVO">
+		<include refid="selectAll" />
+		AND MEM_ID = #mem_id#
+		<dynamic>
+
+			<isNotEmpty property="mem_pass" prepend="AND">
+				 MEM_PASS = #mem_pass#
+
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+
+	<select id="memberList" resultClass="memberVO">
+
+		<include refid="selectAll" />
+
+	</select>
+
+	<update id="updateMember" parameterClass="memberVO">
+	UPDATE MEMBER
+	SET 
+		MEM_PASS = #mem_pass#
+	,MEM_HOMETEL = #mem_hometel#
+
+	,MEM_HP = #mem_hp#
+	,MEM_MAIL = #mem_mail#
+	,MEM_ADD1 = #mem_add1#
+	,MEM_ADD2 = #mem_add2#
+	,MEM_JOB = #mem_job#
+	,MEM_LIKE = #mem_like#
+	
+	WHERE MEM_ID = #mem_id#
+	</update>
+	
+	
+	<update id="deleteMember" parameterClass="map">
+		UPDATE MEMBER
+			SET
+		 MEM_DELETE ='y'
+			WHERE MEM_ID = #mem_id#
+	
+	
+	</update>
+	
+	<insert id="insertMember" parameterClass="memberVO">
+	INSERT INTO MEMBER ( MEM_ID, MEM_PASS,MEM_NAME,MEM_BIR,MEM_REGNO1,MEM_REGNO2, MEM_HOMETEL  ,MEM_HP, MEM_MAIL , MEM_ADD1	,MEM_ADD2, MEM_ZIP, MEM_JOB , MEM_LIKE )
+	VALUES( #mem_id#, #mem_pass#,#mem_name#,#mem_bir#, #mem_regno1#,#mem_regno2#, #mem_hometel#	, #mem_hp#	, #mem_mail#, #mem_add1#, #mem_add2#, #mem_zip#, #mem_job#	, #mem_like#)
+	
+	
+	
+	
+	</insert>
+
+</sqlMap>    
