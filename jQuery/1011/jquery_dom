@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery_document object model</title>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+	window.onload = function() {
+		
+		//전체를 대상으로 
+		plist = $('P') 
+		plist.css('color','red'	);
+		
+		//전체중에 두번째 만 선택 - plist[1]
+		//plist[1]는 dom객체로 변환된다.
+		plist[1].style.color = 'blue';
+		
+	
+		
+		//css()메소드를 호출할 수 없다.		
+	 	//plist[1].css('color','blue');    //이거는 실행 안됨 ...
+	 	//plist[1]를 $()로 감싸면 jQuery 객체가 된다.
+	 	
+	 	
+	 	$(plist[1]).css('color','green');   //jQuery로 변한거
+	
+	}
+</script>
+
+
+
+
+
+</head>
+<body>
+
+<pre>
+	<h2>jQuery객체를 dom객체로 변환 : [0], get[0]</h2>
+	plist = $('p');
+	
+	plist 는 jQuery객체다. 전체 p를 선택
+	plist.css('color','red');
+	
+	전체중에 두번째 만 선택 - plist[1], plist.get(0)
+	plist[1]는 dom객체로 변환된다.
+	plist[1].style.color = 'blue';
+	$(plist[1]).css('color','green');   //jQuery로 변한거
+	
+	
+	
+</pre>
+
+
+
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+</body>
+</html>
