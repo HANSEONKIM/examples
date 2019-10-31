@@ -1,0 +1,14 @@
+package kr.or.ddit.prod.service;
+
+import java.util.List;
+
+import kr.or.ddit.prod.vo.ProdVO;
+
+public interface IProdService {
+
+	
+public List<ProdVO> prodBylugName(String lprod_gu);
+	
+	public ProdVO prodByidDetail(String prod_id);
+	
+}
