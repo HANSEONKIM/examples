@@ -1,0 +1,83 @@
+package kr.or.ddit.buyer.controller;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.or.ddit.buyer.service.BuyerServiceImpl;
+import kr.or.ddit.buyer.service.IBuyerService;
+import kr.or.ddit.buyer.vo.BuyerVO;
+
+/**
+ * Servlet implementation class Buyer
+ */
+@WebServlet("/BuyerList")
+public class BuyerList extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public BuyerList() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//0. 클라이언트 전송 시 전달되는 데이터를 받는다.
+		
+		//1. Service객체를 얻어온다.
+		IBuyerService service = BuyerServiceImpl.getInstance();
+		
+		//2. service 메소드 호출하기 - 결과값 받기.
+		List<BuyerVO> list = service.getBuyerNames();
+		
+		//3.결과 값을 request에 저장하기
+		
+		request.setAttribute("list", list);
+		
+		//4.view 페이지로 forward 하기.
+		
+		request.getRequestDispatcher("1029/buyerNames.jsp").forward(request, response);
+		
+		
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+			//0. 클라이언트 전송 시 전달되는 데이터를 받는다.
+				String buyerId = request.getParameter("id");
+		
+		
+				//1. Service객체를 얻어온다.
+				IBuyerService service = BuyerServiceImpl.getInstance();
+				
+				//2. service 메소드 호출하기 - 결과값 받기.
+				BuyerVO vo = service.getDetail(buyerId);
+				
+				//3.결과 값을 request에 저장하기
+				
+				request.setAttribute("vo", vo);
+				
+				//4.view 페이지로 forward 하기.
+				RequestDispatcher disp = request.getRequestDispatcher("1029/buyerDetail.jsp");
+		disp.forward(request, response);
+				
+	}
+
+}
