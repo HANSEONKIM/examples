@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+	$(function() {
+		
+		$('#but1').on('click', function() {
+			//$('<div id = "aa" class="aa" onclick="proc()!">여기는 새로 만들어진 div</div>')
+
+			$('<div/>', {
+				'id' : 'aa',
+				'class' : 'aa',
+				'text' : '여기는 새로 만들어지는 div입니다',
+				'width' : '500px',
+				'height' : '30px',
+				'click' : function() {
+					$(this).css('background', 'pink');
+				}
+
+			}).appendTo('#result');
+
+		})
+		
+		imgs = ["보노보노.png","스마일.png","짱구.png","짱구2.png","티모.jpg","보노보노.jpg","커피원두1.jpg"];
+
+		$('#but2').on('click', function() {
+			rand = Math.floor(Math.random()*imgs.length);
+			
+			$('<img/>',{
+				'src' : '../images/'+ imgs[rand]
+				,'width' : '300px'
+				
+				,'height' : '300px'
+				,'click' : function(){
+					$(this).css('border','5px solid yellow');
+				}
+				
+			}).appendTo('body');
+
+			
+			
+		})
+
+	})
+</script>
+
+</head>
+<body>
+	<pre>
+	1. 클릭하세요
+	div라는 요소를 새롭게 동적으로 생성 id가  result인 곳에 추가한다.
+	새로 만들어진 div를 클릭하면  배경색 변경
+	
+	2. 이미지 추가
+	   새로운 이미지를 동적으로 생성한다.
+	   body에 추가한다.
+	   새로운 이미지를 클릭하면  이미지의 테두리를 설정한다
+	
+</pre>
+
+	<button id="but1" type="button">클릭하세요</button>
+	<br>
+	<br>
+	<div id="result"></div>
+	<br>
+	<button id="but2" type="button">이미지추가</button>
+	<br>
+
+</body>
+
+</html>
