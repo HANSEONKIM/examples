@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<link rel ="stylesheet" href = "../css/mystyle.css">
+<script>
+	$(document).ready(function() {
+		//전체 p태그를 선택한다.
+		$('p').css('font-size', '1.5em');
+
+		$('p', document.forms[1]).css('color', 'red');
+
+		$('div').on('click', function() {
+			$('p', this).css('color', '#54FF81');
+		})
+
+	})
+</script>
+</head>
+
+<body>
+	<pre>
+		요소의 선택 범위를 지정
+		$('p') : 전체를 범위로 한다.
+			-$('p').css('font-size', '1.5em');
+		$('p', document.forms[1]) : 첫번째 FORM을 대상으로 p를 선택한다.
+			-$('p', document.forms[1]).css('color', 'red');
+		$('div').on('click', function() {
+			$('p', this) :  클릭하는 DIV안에서 p를 선택
+		})
+	</pre>
+	
+	
+	<div>
+		<p>무궁화 꽃이 피었습니다</p>
+	</div>
+
+	<p>단풍잎이 빨갛게 물들었습니다.</p>
+
+	<div>
+		<p>노오란 은행잎이 우수수 떨어집니다</p>
+
+	</div>
+
+	<form>
+		<p>국화꽃이 물들었습니다.</p>
+	</form>
+
+	<form>
+		<p>하얀 눈이 기다려지나요??.</p>
+	</form>
+
+
+
+</body>
+</html>
