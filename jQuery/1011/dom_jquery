@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>document object model_jquery</title>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<script>
+	$(function() {
+		plist = document.getElementsByTagName('p');
+		//plist[0].css('color','red) ===>오류발생
+
+		//plist[0]을 $()로 감싸준다.
+
+		$(plist[0]).css('color', 'red');
+
+	})
+</script>
+</head>
+<body>
+	<pre>
+	<h2>	dom객체를 jQuery 객체로 변환 : $()</h2>
+	plist = document.getElementsByTagName('p');
+	
+	plist 객체는 dom 객체다.
+	
+	jQuery 메소드를 호출할 수 없다.
+	plist[0].css('color','red) 로 쓸 수 없음 ====> 오류
+	plist[0] 객체를 $()함수로 감싸면 jQuery객체로 변환되어 jQuery메소드를 호출할 수 있따.
+	$(plist[0]).css('color','red'); ===> 이렇게 써야함
+	
+
+</pre>
+
+
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+
+
+</body>
+</html>
