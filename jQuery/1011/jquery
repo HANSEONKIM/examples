@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery_jQuery</title>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+
+<script>
+	$(function() {
+		//plist는 jQuery객체 - 전체를 선택
+		plist = $('p');
+
+		//전체 중에서 3번째만 선택 -  .eq(2) 
+		//plist.eq(2) jQuery객체다.
+		plist.eq(2).css('color', 'blue');
+	})
+</script>
+</head>
+
+<body>
+	<pre>
+	<h2>jQuery객체 중에서 일부분의 jQuery객체를 선택</h2>
+		> plist는 jQuery객체 - 전체를 선택
+			plist = $('p');
+
+		> 전체 중에서 3번째만 선택 -  .eq(2) 
+	  		plist.eq(2) jQuery객체다.
+			plist.eq(2).css('color', 'blue');
+	
+
+</pre>
+
+
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<p>무궁화 꽃이 피었습니다.</p>
+
+
+</body>
+</html>
