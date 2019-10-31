@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>New html</title>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+</head>
+<script>
+
+	$(function(){
+		
+	$('#but1').on('click',function(){
+			ptag =	$('<p id="p1" class ="p1">새로운 월요일이 시작되었습니다.</p>');
+			$(ptag).appendTo('body');
+			
+			
+		})
+	})
+		
+	
+
+	function proc1(){
+		
+		res = "";
+		
+		for(var i =0; i<5; i ++){
+			
+		res = $("<p>무궁화 꽃이 피었습니다 </p>");
+		//body태그의 마지막 위치에 추가 한다.
+		$(res).appendTo('body'); //body 태그에 추가된다.
+	//	$('body').append(res);//위에랑 반대로 쓴건데[ 같은거임 ./.]
+		}
+		
+	}
+
+	
+</script>
+<body>
+<pre>
+	<h2> 이벤트 핸들러 지정</h2>
+	
+	1) script 방식	- 태그안에서 직접 onclick = "함수명()"
+		&lt;button onclick ="proc1()" &gt;
+		
+	2) jQuery방식 - 태그안에서 직접 설정하지 않는다.
+		script방식에서
+		-$('#but1').on('click',function(){});
+		
+	<h2>새로운 html을 동적으로 생성해서 추가하기</h2>	
+		1) 생성 : 
+			res = $("&lt;p&gt;무궁화 꽃이 피었습니다 &lt;/p&gt;;");
+		2) 추가하기 : 
+			$(res).appendTo('body');
+	
+
+</pre>
+
+	<button onclick="proc1()" type="button">클릭하세요-script</button>
+	<button id="but1" type="button">클릭하세요-jQuery</button>
+	<br>
+</body>
+</html>
