@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+
+$(function(){
+	
+	$('button').click(function(){
+		
+		$.ajax({
+			
+			url : "/jqpro/LprodList",
+			type : "get",
+			success : function(res){
+				
+				code = "";
+				$.each(res,function(i){
+					
+					code += "LPROD_ID" + res[i].id + "<br>";
+					code += "LPROD_ID" + res[i].gu + "<br>";					
+					code += "LPROD_ID" + res[i].nm + "<br>";
+					code += "<hr color ='blue'>";
+				})
+				
+				$('#result').html(code);
+				
+			},
+			error : function(xhr){
+				alert("상태" + xhr.status + "\n text :" + xhr.statusText);
+				
+			},
+			dataType : "json"
+			
+			
+			
+		})
+		
+		
+	})
+	
+	
+})
+	
+</script>
+</head>
+<body>
+	<div class="box">
+		<button type="button">lprod리스트</button>
+	</div>
+	<br>
+	<br>
+	<div id="result"></div>
+
+
+</body>
+</html>
