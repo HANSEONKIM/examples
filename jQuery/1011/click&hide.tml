@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>클릭하면 사라집니다 ^^</title>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function() {
+		$('h1').on('click', function() {
+			$(this).hide();
+			//$(this).css('dsplay','none'	);
+			if($('h1:visible').length ==0){
+				$('button').show();
+			}
+		})
+		
+		
+		$('button').on('click',function(){
+			$('h1').show();
+			$(this).hide();
+			
+		})
+		
+
+	})
+</script>
+<style>
+
+button{
+	display : none;
+}
+</style>
+
+
+</head>
+<body>
+	<h1>클릭하면 사라집니다.1</h1>
+	<h1>클릭하면 사라집니다.2</h1>
+	<h1>클릭하면 사라집니다.3</h1>
+	<h1>클릭하면 사라집니다.4</h1>
+	<h1>클릭하면 사라집니다.5</h1>
+	<h1>클릭하면 사라집니다.6</h1>
+	<h1>클릭하면 사라집니다.7</h1>
+	<h1>클릭하면 사라집니다.8</h1>
+	<h1>클릭하면 사라집니다.9</h1>
+	<h1>클릭하면 사라집니다.10</h1>
+
+
+	<button type="button">보이기</button>
+
+</body>
