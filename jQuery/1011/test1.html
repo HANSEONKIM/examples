@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src ="../js/jquery-3.4.1.min.js"></script>
+
+<script>
+
+
+/* 	window.onload = function(){
+		
+		h2list = document.getElementsByTagName('h2');
+		
+		h2list[0].style.color = 'blue';
+		h2list[1].style.fontSize = '3.0em';
+		
+	}
+ */
+ 
+ ////////////////////////////////////////////////////
+ 
+// $(document).ready(function(){
+	$(function(){
+		
+	
+	 h2list = $('h2');
+	 h2list.eq(0).css('color','red');
+	 h2list.eq(1).css('font-size','3.0em');
+	 
+	 $('#hh3').css('background','yellow');
+	 $('.hh4').css('border','2px solid red');
+ })
+ 
+ 
+ 
+ 
+</script>
+
+
+
+
+</head>
+<body>
+	<h2>안녕하세요</h2>
+	<h2>jQuery입니다.</h2>
+	<h2 id="hh3">javascript의 라이브러리 입니다.</h2>
+	<h2 class="hh4">jQuery.com에서 다운로드 합니다.</h2>
+	<h2 class="hh4">다운로드후 실행 하기위해서 &lt; script &gt; 태그를 이용합니다.</h2>
+</body>
+</html>
