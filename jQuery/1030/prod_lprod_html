@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script type="text/javascript">
+
+$(function(){
+	
+		
+	$.ajax({
+		
+		url : "/jqpro/LprodList",
+		type : "get",
+		success : function(res){
+			
+			var code = "";
+			$.each(res,function(i,v){
+						
+			code += " <option   value="+v.gu+">" + res[i].nm + "</option>";
+			
+			})
+			
+			$('#lprod').html(code);
+			
+		},
+		error : function(xhr){
+			alert("상태" + xhr.status + "\n text :" + xhr.statusText);
+			
+		},
+		dataType : "json"
+		
+		
+		
+	})
+	
+	
+	$('#lprod').on('change',function(){
+		
+		//선택한 요소의 value 값을 가져온다.
+		
+		guvalue = $(this).val();
+		
+		$.ajax({
+			
+			url : '/jqpro/ProdList',
+			type : 'post',
+			data : {'gu' :  guvalue},
+			success : function(res){
+				
+				
+				var code = "";
+				$.each(res,function(i,v){
+							
+				code += " <option   value="+v.id+">" + res[i].name + "</option>";
+				
+				})
+				
+				$('#prod').html(code);
+				
+				
+			},
+			error : function(xhr){
+				
+				alert("상태" + xhr.status + "\n text :" + xhr.statusText);
+				
+			},
+			dataType: "json"
+			
+		})
+		
+		
+	})
+	
+	
+		$('#prod').on('change',function(){
+		
+		//선택한 요소의 value 값을 가져온다.
+		
+		prodvalue = $(this).val();
+		
+		$.ajax({
+			
+			url : '/jqpro/ProdDetailList',
+			type : 'post',
+			data : {'id' :  prodvalue},
+			success : function(res){
+				
+				
+				
+				var code = "<table border='1' >";
+			
+				
+			
+				code += "<tr><td>prod_ID</td><td>"+res.id+"</td></tr>";
+				code += "<tr><td>PROD_Name</td><td>"+res.name+"</td></tr>";
+				code += "<tr><td>PROD_LGU</td><td>"+res.lgu+"</td></tr>";
+				code += "<tr><td>PROD_BUYER</td><td>"+res.buyer+"</td></tr>";
+				code += "<tr><td>PROD_COST</td><td>"+res.cost+"</td></tr>";
+				code += "<tr><td>PROD_PRICE</td><td>"+res.price+"</td></tr>";
+				code += "<tr><td>PROD_SALE</td><td>"+res.sale+"</td></tr>";
+				code += "<tr><td>PROD_OUTLINE</td><td>"+res.outline+"</td></tr>";
+				code += "<tr><td>PROD_DETAIL</td><td>"+res.detail+"</td></tr>";
+			
+			
+				code+="</table>";
+				
+				
+				
+				$('#detail').html(code);
+				
+				
+			},
+			error : function(xhr){
+				
+				alert("상태" + xhr.status + "\n text :" + xhr.statusText);
+				
+			},
+			dataType: "json"
+			
+		})
+		
+		
+	})
+	
+	
+	
+	
+	
+	
+})
+
+
+
+
+
+
+
+</script>
+</head>
+<body>
+
+<table border="1">
+	<tr>
+		<td>
+			<select id="lprod">
+				
+			</select>
+		</td>
+		<td>
+			<select id="prod">
+				
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"  id="detail">상세보기</td>
+	</tr>
+</table>
+</body>
+</html>
