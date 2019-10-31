@@ -1,0 +1,55 @@
+package kr.or.ddit.lprod.controller;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import sun.rmi.server.Dispatcher;
+import kr.or.ddit.lprod.service.ILprodService;
+import kr.or.ddit.lprod.service.LprodServiceImpl;
+import kr.or.ddit.lprod.vo.LprodVO;
+
+/**
+ * Servlet implementation class LprodList
+ */
+@WebServlet("/LprodList")
+public class LprodList extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LprodList() {
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		//0. 클라이언트 전송 시 전달되는 데이터를 받는다.
+		
+		//1. service 객체를 얻어온다.
+		ILprodService service = LprodServiceImpl.getInstance();
+		
+		//2. service 메소드를 호출 - 결과값을 받는다.
+		List<LprodVO> list = service.selectLprod();
+		
+		
+		//3. 결과값을 request에 저장한다.
+		
+		request.setAttribute("list", list);
+		
+		//4. view 페이지로 넘어간다. - forward(dispatcher괄호 안에는 jsp페이지...
+		
+		request.getRequestDispatcher("1029/lprodlist.jsp").forward(request, response);
+		
+	}
+
+}
