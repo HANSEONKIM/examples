@@ -1,0 +1,45 @@
+package kr.or.ddit.lprod.service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import kr.or.ddit.lprod.dao.ILprodDao;
+import kr.or.ddit.lprod.dao.LprodDaoImpl;
+import kr.or.ddit.lprod.vo.LprodVO;
+
+public class LprodServiceImpl implements ILprodService {
+
+	// dao 객체가 필요
+	private ILprodDao dao;
+	
+	private static ILprodService service;
+	
+	public static ILprodService getInstance(){
+		
+		if(service ==null) service = new LprodServiceImpl();
+
+		return service;
+		
+	}
+
+	private LprodServiceImpl() {
+
+		dao = LprodDaoImpl.getInstance();
+
+	}
+
+	@Override
+	public List<LprodVO> selectLprod() {
+		List<LprodVO> list = null;
+
+		try {
+			list = dao.selectLprod();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+
+	}
+
+}
