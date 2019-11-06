@@ -1,0 +1,61 @@
+package kr.or.ddit.member.controller;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.or.ddit.member.serivce.IMemberService;
+import kr.or.ddit.member.serivce.MemberServiceImpl;
+import kr.or.ddit.member.vo.ZipVO;
+
+/**
+ * Servlet implementation class SelectGugun
+ */
+@WebServlet("/SelectGugun")
+public class SelectGugun extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SelectGugun() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		//0. 클라이언트 전송 시 전달되는 데이터를 받는다.
+		request.setCharacterEncoding("UTF-8");
+		
+		String sido = request.getParameter("sido");
+
+		//1. service 객체를 얻어온다.
+		
+		IMemberService service = MemberServiceImpl.getInstance();
+		
+		//2. service 메소드를 호출 - 결과값을 받는다.
+
+		List<ZipVO> vo = service.selectGugun(sido);
+		//3. 결과값을 request에 저장한다.
+		
+		request.setAttribute("vo", vo);
+		
+		//4. view 페이지로 넘어간다. - forward(dispatcher괄호 안에는 jsp페이지... donglist.jsp
+		
+		request.getRequestDispatcher("/1031/selectGugun.jsp").forward(request, response);
+		
+		
+	}
+
+}
