@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="selectaddr">
+
+	<select id="selectSido" resultClass="zipVO">
+	
+		SELECT DISTINCT SIDO 
+		FROM ZIPTB
+	</select>
+	
+		<select id="selectGugun" parameterClass="String" resultClass="zipVO">
+	
+		SELECT DISTINCT GUGUN
+		
+		FROM ZIPTB 
+		
+		WHERE SIDO = #sido#
+	</select>
+	
+	
+	
+	<select id="selectDong" parameterClass="map" resultClass="zipVO">
+	
+		SELECT DISTINCT DONG
+		
+		FROM ZIPTB 
+		
+		WHERE SIDO = #sido#
+		
+		
+		and GUGUN = #gugun#
+			
+	</select>
+	
+		
+	<select id="selectAddr" parameterClass="zipVO" resultClass="zipVO">
+	
+		SELECT ZIPCODE,
+		 SIDO,
+		 GUGUN,
+	     DONG,
+		 NVL(BUNJI, ' ')AS BUNJI
+		
+		FROM ZIPTB 
+		
+		WHERE SIDO = #sido#
+		
+				and GUGUN = #gugun#
+		
+				and DONG LIKE #dong# || '%'
+			
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+</sqlMap>			
